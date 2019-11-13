@@ -2,7 +2,9 @@ package FinalProject;
 import java.util.*;
 
 public class WordProcessor {
-    
+    //////////////////////////////////////////////////////////////////
+	//Just for testing purposes to make sure github was updateing
+	
 	public void dispMessage()
     {
         System.out.println("Hello World.");
@@ -11,8 +13,10 @@ public class WordProcessor {
     //Main method
     public static void main(String s[])
     {
-        //creat object of HelloWorld Class
+        //create object of HelloWorld Class
     	WordProcessor obj = new WordProcessor();
         obj.dispMessage();
     }
+    
+    ///////////////////////////////////////////////////////////////////
 }
