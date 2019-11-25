@@ -42,6 +42,8 @@ public class TextEditorMain
 			
 		}
 		//are we making an array for each read in line?
+		//Also how are we storing the commands? just by storing the number of the line before which the command is
+		?
 	}
 			
   } 
