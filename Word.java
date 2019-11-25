@@ -2,13 +2,13 @@ package TextEditor;
 
 public class Word 
 {
-	String content;
-	int charCount;
+	public String content;
+	public int charCount;
 	
 	public Word()
 	{
-		content="";
-		charCount = 0;
+		this.content="";
+		this.charCount = 0;
 	}
 
 }
