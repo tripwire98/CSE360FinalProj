@@ -51,6 +51,10 @@ public class WordProcessor {
 	    		else 
 	    		{
 	    			//double the array and copy it code missing for now
+	    			String[] tempArray = new String[commands.length*2];
+	    			for(int i=0; i<commands.length; i++)
+	    				tempArray[i]=commands[i];
+	    			commands = tempArray;
 	    			commands[numCommands]=currentCommand;
 		    		numCommands++;	
 	    		}
@@ -74,12 +78,17 @@ public class WordProcessor {
 	    		//checking if the array for the line is full and f number of characters is exactly divisable by 100s
 	    		if ((numWords+1)%100!=0 && numChar%100!=0)
 	    		{
+	    			
 	    			line[(numWords+1)%100]=word;
 	    			numWords++;	
 	    		}
 	    		else 
 	    		{
 	    			//double the array and copy it code missing for now
+	    			String[] tempArray = new String[line.length*2];
+	    			for(int i=0; i<line.length; i++)
+	    				tempArray[i]=line[i];
+	    			line = tempArray;
 	    			line[(numWords+1)%100]=word;
 	    			numWords++;	
 	    		}
