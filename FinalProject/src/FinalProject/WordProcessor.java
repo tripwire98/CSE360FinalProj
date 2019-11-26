@@ -28,11 +28,14 @@ public class WordProcessor {
 	    while(numChar < st.length())
 	    {
 	    	String currentChar = Character.toString(in.next().charAt(0));
-	    	String currentCommand;
-	    	//if the read character is dash then read until emptyspace? and add into command array?
-	    	if(currentChar.contentEquals("-"))
+	    	String currentCommand="";
+	    	//if the read character is dash then read until empty space? and add into command array?
+	    	if(currentChar.equals("-"))
 	    	{
-	    		//
+	    		currentCommand=currentCommand+currentChar;
+	    		currentChar = Character.toString(in.next().charAt(0));
+	    		if ()
+	    		
 	    	}
 	    }
 	    
