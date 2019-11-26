@@ -56,6 +56,7 @@ public class WordProcessor {
 	    		}
 	    	}
 	    	//if it is not a command either start storing the characters as words somewhere or lines ?!?
+	    	//or we can do this whole part once all commands are read and we know how many characters per line/if wrapping is on
 	    	else 
 	    	{
 	    		String word = currentChar;
@@ -70,7 +71,7 @@ public class WordProcessor {
 	    			currentChar = Character.toString(in.next().charAt(0));	
 	    			numChar++;
 	    		}
-	    		
+	    		//checking if the array for the line is full and f number of characters is exactly divisable by 100s
 	    		if ((numWords+1)%100!=0 && numChar%100!=0)
 	    		{
 	    			line[(numWords+1)%100]=word;
