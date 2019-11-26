@@ -54,8 +54,20 @@ public class WordProcessor {
 		    		numCommands++;	
 	    		}
 	    	}
-	    	//if it is not a command either start storeing the characters as words somewhere or lines ?!?
+	    	//if it is not a command either start storing the characters as words somewhere or lines ?!?
 	    	else 
+	    	{
+	    		String word = currentChar;
+	    		//we need to count the character
+	    		numChar++;
+	    		word=word+currentChar;
+	    		currentChar = Character.toString(in.next().charAt(0));
+	    		while (!currentChar.equals(" ")) {
+	    			word=word+currentChar;
+	    			currentChar = Character.toString(in.next().charAt(0));	
+	    			numChar++;
+	    		}
+	    	}
 	    }
 	    
 	 }
