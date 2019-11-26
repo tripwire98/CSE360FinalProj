@@ -41,9 +41,21 @@ public class WordProcessor {
 	    			currentCommand=currentCommand+currentChar;
 	    			currentChar = Character.toString(in.next().charAt(0));
 	    		}
-	    		commands[numCommands]=currentCommand;
-	    		numCommands++;	
+	    		//i think we need to be checking if the command array is full and if so doubling it
+	    		if (numCommands<100)
+	    		{
+	    			commands[numCommands]=currentCommand;
+	    			numCommands++;	
+	    		}
+	    		else 
+	    		{
+	    			//double the array and copy it code missing for now
+	    			commands[numCommands]=currentCommand;
+		    		numCommands++;	
+	    		}
 	    	}
+	    	//if it is not a command either start storeing the characters as words somewhere or lines ?!?
+	    	else 
 	    }
 	    
 	 }
