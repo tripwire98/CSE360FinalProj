@@ -30,11 +30,12 @@ public class WordProcessor {
 	    	String currentChar = Character.toString(in.next().charAt(0));
 	    	String currentCommand="";
 	    	//if the read character is dash then read until empty space? and add into command array?
+	    	//also we need to be checking if we are not in the actual txt but we are on the command line because the input is read a s one string
 	    	if(currentChar.equals("-"))
 	    	{
 	    		currentCommand=currentCommand+currentChar;
 	    		currentChar = Character.toString(in.next().charAt(0));
-	    		if ()
+	    		if (currentChar.equals(" "))
 	    		
 	    	}
 	    }
