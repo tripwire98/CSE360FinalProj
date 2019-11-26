@@ -71,7 +71,7 @@ public class WordProcessor {
 	    			numChar++;
 	    		}
 	    		
-	    		if ((numWords+1)%100!=0)
+	    		if ((numWords+1)%100!=0 && numChar%100!=0)
 	    		{
 	    			line[(numWords+1)%100]=word;
 	    			numWords++;	
