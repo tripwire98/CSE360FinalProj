@@ -24,19 +24,25 @@ public class WordProcessor {
 	    String[] commands = new String[100];
 	    //an integer holding the count of the characters
 	    int numChar = 0;
+	    int numCommands=0;
 	   //read the string character by character until the size of the string
 	    while(numChar < st.length())
 	    {
 	    	String currentChar = Character.toString(in.next().charAt(0));
+	    	numChar++;
 	    	String currentCommand="";
-	    	//if the read character is dash then read until empty space? and add into command array?
+	    	//if the read character is dash then read until empty space? and add into command array? and we dont need to increase the numChar count because we are not putting them into output txt?
 	    	//also we need to be checking if we are not in the actual txt but we are on the command line because the input is read a s one string
 	    	if(currentChar.equals("-"))
 	    	{
 	    		currentCommand=currentCommand+currentChar;
 	    		currentChar = Character.toString(in.next().charAt(0));
-	    		if (currentChar.equals(" "))
-	    		
+	    		while (!currentChar.equals(" ")) {
+	    			currentCommand=currentCommand+currentChar;
+	    			currentChar = Character.toString(in.next().charAt(0));
+	    		}
+	    		commands[numCommands]=currentCommand;
+	    		numCommands++;	
 	    	}
 	    }
 	    
