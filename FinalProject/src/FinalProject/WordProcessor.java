@@ -82,7 +82,7 @@ public class WordProcessor {
 	    			line[(numWords+1)%100]=word;
 	    			numWords++;	
 	    		}
-	    		else 
+	    		else if(numChar%100!=0) 
 	    		{
 	    			//double the array and copy it code missing for now
 	    			String[] tempArray = new String[line.length*2];
@@ -92,7 +92,8 @@ public class WordProcessor {
 	    			line[(numWords+1)%100]=word;
 	    			numWords++;	
 	    		}
-	    		
+	    		else
+	    			//need to start a new line
 	    	}
 	    }
 	    
