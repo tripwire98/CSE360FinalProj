@@ -25,6 +25,7 @@ public class WordProcessor {
 	    //an integer holding the count of the characters
 	    int numChar = 0;
 	    int numCommands=0;
+	    int numWords = 0;
 	    String currentChar = Character.toString(in.next().charAt(0));
 	   //read the string character by character until the size of the string
 	    while(numChar < st.length())
@@ -58,6 +59,8 @@ public class WordProcessor {
 	    	else 
 	    	{
 	    		String word = currentChar;
+	    		//making an array to hold a line of words?
+	    		String[] line = new String[100];
 	    		//we need to count the character
 	    		numChar++;
 	    		word=word+currentChar;
@@ -67,6 +70,19 @@ public class WordProcessor {
 	    			currentChar = Character.toString(in.next().charAt(0));	
 	    			numChar++;
 	    		}
+	    		
+	    		if ((numWords+1)%100!=0)
+	    		{
+	    			line[(numWords+1)%100]=word;
+	    			numWords++;	
+	    		}
+	    		else 
+	    		{
+	    			//double the array and copy it code missing for now
+	    			line[(numWords+1)%100]=word;
+	    			numWords++;	
+	    		}
+	    		
 	    	}
 	    }
 	    
