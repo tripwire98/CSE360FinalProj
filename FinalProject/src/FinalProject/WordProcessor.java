@@ -39,6 +39,8 @@ public class WordProcessor {
 	    String leftoverWord = "";
 	    int leftoverCount = 0;
 	    
+	    boolean startParagraph = true;
+	    
 	    //start reading the file and keep at it until end of file/there is a next line
 	    while (in1.hasNextLine())
 	    {
@@ -49,6 +51,7 @@ public class WordProcessor {
 	    	//if it starts with dash it is a command and we need to change defaults
 	    	if(currentChar.equals("-"))
 	    	{
+	    		startParagraph = true;
 	    		currentChar = Character.toString(in2.next().charAt(0));
 	    		switch(currentChar)
 	    		{
@@ -121,7 +124,6 @@ public class WordProcessor {
 	    			//if the line does not start with empty space read the line in 
 	    			if(!currentChar.equals(" "))
 	    			{
-	    				boolean startParagraph = true;
 	    				//if it is left justified and number of characters is 0 we print the number of indents and then the current character
 	    				if(justified == 'l' && startParagraph)
 	    				{
@@ -152,11 +154,16 @@ public class WordProcessor {
 		    						currentOutputLine = currentOutputLine + leftoverWord;
 		    						currentCharCount++;
 		    					}
-		    					currentChar = Character.toString(in.next().charAt(0));	
+		    					//since we consume a character in the read in line we increase the i
+		    					i++;
+		    					//and we fetch next character of the line
+		    					currentChar = Character.toString(currentLine.charAt(i));	
 		    				}
-		    				//when we reach the maximum character length reset the char count
+		    				//when we reach the maximum character length set for the output we reset the char count to 0
 		    				currentCharCount = 0;
-		    				//when the line is ready print it to file and println
+		    				//and we print the line to file using println and we reset the current output line
+		    				out.println(currentOutputLine);
+		    				currentOutputLine = "";
 		    				
 		    			}
 	    				//if wrapping is on
