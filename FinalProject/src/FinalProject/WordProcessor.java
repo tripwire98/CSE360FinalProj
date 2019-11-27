@@ -172,7 +172,7 @@ public class WordProcessor {
 	    					//and we fetch next character of the line
 	    					currentChar = Character.toString(currentLine.charAt(i));    					
 	    				}
-	    				//if it is right justified add the number of leftover spaces in the beggining of the output line
+	    				//if it is right justified add the number of leftover spaces in the beginning of the output line
 	    				if(justified == 'r')
 	    				{
 	    					for(int k = 1; k <= leftoverCount; k++)
@@ -180,7 +180,7 @@ public class WordProcessor {
 	    						currentOutputLine = " " + currentOutputLine;
 	    					}
 	    				}
-	    				//if it is center justified divide the number of leftover count in 2 andadd half in the beffining
+	    				//if it is center justified divide the number of leftover count in 2 and add half in the beginning
 	    				if(justified == 'c')
 	    				{
 	    					for(int k = 1; k <= leftoverCount/2; k++)
