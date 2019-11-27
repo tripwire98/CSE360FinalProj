@@ -32,6 +32,10 @@ public class WordProcessor {
 	    String currentOutputLine = "";
 	    String currentWord = "";
 	    
+	    //variables holding the word leftover from previous line and the count of characters in it
+	    String leftoverWord = "";
+	    int leftoverCount = 0;
+	    
 	    //start reading the file and keep at it until end of file/there is a next line
 	    while (in.hasNextLine())
 	    {
@@ -50,7 +54,7 @@ public class WordProcessor {
 	    				if(temp1<=100)
 	    					lineLength = temp1;
 	    				else //we probably need to change the response to the error to something more appropriate
-	    					System.out.println("Error: Lenght selection exceeds maximum!")
+	    					System.out.println("Error: Lenght selection exceeds maximum!");
 	    				break;
 	    			case("r"):
 	    				justified = 'r';
@@ -106,23 +110,34 @@ public class WordProcessor {
 	    	}
 	    	else//if it starts with letter or space start reading
 	    	{
-	    		for(int i = 0; i<lineLength; i++)
-	    		{
-	    			//if the line does not start with empty space read the line in 
-	    			if(!currentChar.equals(" "))
-	    			{
-	    				//if it is left justified and number of characters is 0 we print the number of indents and then the current character
-	    				for(int j = 0; j<paragraph; j++)
+	    		//if the line does not start with empty space read the line in 
+    			if(!currentChar.equals(" "))
+    			{
+    				boolean startParagraph = true;
+    				//if it is left justified and number of characters is 0 we print the number of indents and then the current character
+    				if(justified == 'l' && startParagraph)
+    				{
+    					for(int i = 0; i<paragraph; i++)
+	    				{
 	    					currentOutputLine = currentOutputLine + " ";
+	    					currentCharCount++;
+	    				}
+    				startParagraph = false;
+    				}
+    				//if wrapping is off
+    				if(!wrapping)
+	    			{
+	    				//while the count of characters is less then line length
+	    				while(currentCharCount <= lineLength)
+		    				
 	    				currentOutputLine = currentOutputLine + currentChar;
 	    			}
+    				//if wrapping is on
+    				else 
+    				
 	    		}
 	    		
 	    	}
-	    	//an integer holding the count of the characters,
-		    int numChar = 0;
-		    int numWords = 0;
-		   
 	    
 	    }
 
