@@ -161,19 +161,20 @@ public class WordProcessor {
     					System.out.println(currentOutputLine+"!");
     					startParagraph = false;
     					System.out.println("StartParagraph is : " + startParagraph);
+    					//i=currentCharCount;
     				}
     				
     				//if wrapping is off
     				//this has to be modified for right,center etc justified
-    				System.out.println("Wrapping is : " + startParagraph);
+    				System.out.println("Wrapping is : " + wrapping);
     				if(!wrapping)
 	    			{
     					System.out.println("Entered no wrapping paragraph");
 	    				//while the count of characters is less then line length
-    					System.out.println(currentCharCount);
+    					System.out.println("CharCount line174"+currentCharCount);
 	    				while(currentCharCount < lineLength)
 	    				{
-	    					System.out.println("Entered currentCharCount is less than length");
+	    					System.out.println("Entered currentCharCount is less than length, line177");
 	    					//until we reach a space we construct a word
 	    					System.out.println("this is character:"+currentChar);
 	    					if(!currentChar.equals(" "))
@@ -181,24 +182,26 @@ public class WordProcessor {
 	    						leftoverWord = leftoverWord + currentChar;
 	    						System.out.println(leftoverWord);
 	    						leftoverCount++;
-	    						System.out.println(leftoverCount);
+	    						System.out.println("count of the word being processed"+leftoverCount);
 	    						currentCharCount++;
-	    						System.out.println(currentCharCount);
+	    						System.out.println("total count of characters"+currentCharCount);
 	    					}
 	    					//if we reach the end of the word or in other words space add the word to the output line and end that line as well as adding the count for the space
 	    					else
 	    					{
 	    						System.out.println("reached end of word");
-	    						currentOutputLine = currentOutputLine + " " + leftoverWord;
+	    						currentOutputLine = currentOutputLine + leftoverWord+ " " ;
 	    						System.out.println(currentOutputLine);
 	    						currentCharCount++;
 	    						leftoverWord = "";
 	    						leftoverCount = 0;
+	    						System.out.println(currentCharCount);
 	    					}
 	    					//since we consume a character in the read in line we increase the i
 	    					i++;
 	    					//and we fetch next character of the line
 	    					currentChar = Character.toString(currentLine.charAt(i));	
+	    					//currentCharCount++;
 	    				}
 	    				//complete the leftover word 
 	    				while(!currentChar.equals(" "))
@@ -229,11 +232,16 @@ public class WordProcessor {
 	    				//when we reach the maximum character length set for the output we set the char count to leftover char count
 	    				//and we print the line to file using println and we reset the current output line to the word we have left from before
 	    				out.println(currentOutputLine);
+	    				System.out.println("Current output line at the end of no wrap part");
+	    				System.out.println(currentOutputLine);
 	    				//if it is double spaced print another line after it
 	    				if(space==2)
 	    					out.println();
+	    				//i=i+currentCharCount;
 	    				currentCharCount = leftoverCount;
+	    				System.out.println("Carried over count of characters from the word that needs to start next line is : "+ currentCharCount);
 	    				currentOutputLine = leftoverWord;
+	    				System.out.println("Carried over word that needs to start next line is : "+ currentOutputLine);
 	    			}
     				//if wrapping is on
     				else
@@ -258,6 +266,7 @@ public class WordProcessor {
 	    				currentCharCount = 0;
 	    				currentOutputLine = "";
     				}
+    				System.out.println("Starting the next output line with the i="+i+" and the current count of characters = "+currentCharCount);
     			}
 	    	}
     		//after we are done with reading in this line we scan in the next input line
