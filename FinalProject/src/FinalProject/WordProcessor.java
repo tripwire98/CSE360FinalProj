@@ -172,6 +172,22 @@ public class WordProcessor {
 	    					//and we fetch next character of the line
 	    					currentChar = Character.toString(currentLine.charAt(i));    					
 	    				}
+	    				//if it is right justified add the number of leftover spaces in the beggining of the output line
+	    				if(justified == 'r')
+	    				{
+	    					for(int k = 1; k <= leftoverCount; k++)
+	    					{
+	    						currentOutputLine = " " + currentOutputLine;
+	    					}
+	    				}
+	    				//if it is center justified divide the number of leftover count in 2 andadd half in the beffining
+	    				if(justified == 'c')
+	    				{
+	    					for(int k = 1; k <= leftoverCount/2; k++)
+	    					{
+	    						currentOutputLine = " " + currentOutputLine;
+	    					}
+	    				}
 	    				//when we reach the maximum character length set for the output we set the char count to leftover char count
 	    				//and we print the line to file using println and we reset the current output line to the word we have left from before
 	    				out.println(currentOutputLine);
