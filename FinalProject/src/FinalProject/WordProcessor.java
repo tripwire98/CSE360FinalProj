@@ -11,23 +11,92 @@ public class WordProcessor {
 		//for getting the location later on but this works for now
 		String fileLocation = "C:\\Users\\brand\\Desktop\\test.txt";
 	    File file = new File(fileLocation); 
-	  
-	    BufferedReader br = new BufferedReader(new FileReader(file)); 
-	  
-	    String st; 
-	    while ((st = br.readLine()) != null) {
-	      System.out.println(st); 
-	    }
-	   //we read the characters in the string using scanner?
-	    Scanner in = new Scanner(st);
-	    //creating an array holding the commands of a size 100 and if there is more commands we can double it?
-	    String[] commands = new String[100];
-	    //an integer holding the count of the characters
-	    int numChar = 0;
-	    int numCommands=0;
-	    int numWords = 0;
-	    String currentChar = Character.toString(in.next().charAt(0));
-	   //read the string character by character until the size of the string
+	    Scanner in = new Scanner(file);
+	    
+	    //variables keeping track of commands set to defaults
+	    int lineLength = 80;
+	    char justified = 'l';
+	    boolean wrapping = false;
+	    int space = 1;
+	    boolean title = false;
+	    int paragraph = 0;
+	    int blankLine = 0;
+	    boolean twoColumns = false;
+	    
+	    //start reading the file and keep at it until end of file/there is a next line
+	    while (in.hasNextLine())
+	    {
+	    	String currentChar = Character.toString(in.next().charAt(0));
+	    	//if it starts with dash it is a command and we need to change defaults
+	    	if(currentChar.equals("-"))
+	    	{
+	    		currentChar = Character.toString(in.next().charAt(0));
+	    		switch(currentChar)
+	    		{
+	    			case("n"):
+	    				int temp1=in.nextInt(); //we should probably throw error if there is no number following the command n
+	    				if(temp1<=100)
+	    					lineLength = temp1;
+	    				else //we probably need to change the response to the error to something more appropriate
+	    					System.out.println("Error: Lenght selection exceeds maximum!")
+	    				break;
+	    			case("r"):
+	    				justified = 'r';
+	    				break;
+	    			case("l"):
+	    				justified = 'l';
+	    				break;
+	    			case("c"):
+	    				justified = 'c';
+	    				break;
+	    			case("e"):
+	    				justified = 'e';
+	    				break;
+	    			case("w"):
+	    				char temp2 = in.next().charAt(0);
+	    				if(temp2 == '+')
+	    					wrapping = true;
+	    				else if(temp2 == '-')
+	    					wrapping = false;
+	    				else//we probably need to change the response to the error to something more appropriate
+	    					System.out.println("Error: Wrapping command must be followed by + or -.");
+	    				break;
+	    			case("s"):
+	    				space = 1;
+	    				break;
+	    			case("d"):
+	    				space = 2;
+	    				break;
+	    			case("t"):
+	    				title = true;
+	    				break;
+	    			case("p"):
+	    				int temp3=in.nextInt();
+	    				//checking if the number of indents exceeds the current number of characters per line
+	    				if(temp3<lineLength)
+	    					paragraph = temp3;
+	    				else//we probably need to change the response to the error to something more appropriate
+	    					System.out.println("Error: Number of indentd exceeds the line length.");
+	    				break;
+	    			case("b"):
+	    				blankLine =in.nextInt();
+	    				break;
+	    			case("a"):
+	    				int temp4=in.nextInt();
+	    				if(temp4 == 1)
+	    					twoColumns = false;
+	    				else if(temp4 == 2)
+	    					twoColumns = true;
+	    				else//we probably need to change the response to the error to something more appropriate
+	    					System.out.println("Error: You can only choose between 1 or 2 columns.");
+	    				break;	    		
+	    		}
+	    	}
+	    	//an integer holding the count of the characters,
+		    int numChar = 0;
+		    int numWords = 0;
+		   
+		   //read the string character by character until the size of the string
 	    while(numChar < st.length())
 	    {
 	    	
@@ -95,6 +164,7 @@ public class WordProcessor {
 	    		else
 	    			//need to start a new line
 	    	}
+	    }
 	    }
 	    
 	 }
