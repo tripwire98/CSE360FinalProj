@@ -9,14 +9,14 @@ public class WordProcessor {
 	 { 
 		//change the file location to where the test.txt is on your desktop, we will implement a system that works better
 		//for getting the location later on but this works for now
-		String fileLocation = "C:\\Users\\brand\\Desktop\\test.txt";
+		String fileLocation = "C:\\Users\\mojca\\Desktop\\test1.txt";
 	    File file = new File(fileLocation);
 	    //scanner used in case this line is text 
 	    Scanner in1 = new Scanner(file);
 	    //scanner used in case this line is command
 	    Scanner in2 = new Scanner(file);
 	    //we can change the name of a file that we are outputting to something else
-	    PrintWriter out = new PrintWriter("filename.txt");
+	    PrintWriter out = new PrintWriter("test1Formatted.txt");
 	    
 	    //variables keeping track of commands set to defaults
 	    int lineLength = 80;
@@ -42,9 +42,10 @@ public class WordProcessor {
 	    
 	    //reading the line and storing it
     	String currentLine=in1.nextLine();
+    	System.out.println(currentLine);
     	//getting the first character of the line
     	String currentChar = Character.toString(currentLine.charAt(0));
-    	
+    	System.out.println(currentChar);
 	    //start reading the file and keep at it until end of file/there is a next line
 	    while (in1.hasNextLine())
 	    {
@@ -52,17 +53,24 @@ public class WordProcessor {
 	    	//if it starts with dash it is a command and we need to change defaults
 	    	if(currentChar.equals("-"))
 	    	{
+	    		System.out.println("entered comand if.");
 	    		startParagraph = true;
 	    		
 	    		currentChar = Character.toString(currentLine.charAt(1));
+	    		System.out.println("this is command:"+currentChar);
 	    		switch(currentChar)
 	    		{
 	    			case("n"):
 	    				//extracting a substring that should contain the number and parsing it as int
-	    				String tempSub = currentLine.substring(2,currentLine.length()-1);
+	    				String tempSub = currentLine.substring(2,currentLine.length());
+	    				System.out.println("Case n, with following:"+tempSub);
 	    				int temp1=Integer.parseInt(tempSub); //we should probably throw error if there is no number following the command n
+	    				System.out.println("Case n, with number argument:"+temp1);
 	    				if(temp1<=100)
+	    				{
 	    					lineLength = temp1;
+	    					System.out.println("Case n changing line length to:"+lineLength);
+	    				}
 	    				else //we probably need to change the response to the error to something more appropriate
 	    					System.out.println("Error: Lenght selection exceeds maximum!");
 	    				break;
@@ -129,8 +137,10 @@ public class WordProcessor {
 	    		//looping through all the characters in the read in txt line
 	    		for(int i = 0; i<currentLine.length(); i++)
 	    		{
+	    			System.out.println(i);
 	    			//reading the character of current line
 	    			currentChar = Character.toString(currentLine.charAt(i));
+	    			System.out.println("Character at " +i+" is" + currentChar);
     
     				//if it is left justified and number of characters is 0 we print the number of indents and then the current character
     				if(justified == 'l' && startParagraph)
@@ -232,6 +242,10 @@ public class WordProcessor {
 	    	}
     		//after we are done with reading in this line we scan in the next input line
     		currentLine=in1.nextLine();
+    		System.out.println("This is next line read in:");
+    		System.out.println(currentLine);
+    		currentChar = Character.toString(currentLine.charAt(0));
+    		System.out.println("This is next character read in:"+currentChar);
 	    }
 	 }
 }
