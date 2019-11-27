@@ -148,6 +148,9 @@ public class WordProcessor {
 	    			System.out.println("Character at " +i+" is" + currentChar);
     
     				//if it is left justified and number of characters is 0 we print the number of indents and then the current character
+	    			System.out.println("Justification is: " + justified);
+	    			System.out.println("StartParagraph is : " + startParagraph);
+	    			System.out.println("indent count is : " + paragraph);
     				if(justified == 'l' && startParagraph)
     				{
     					for(int j = 0; j<paragraph; j++)
@@ -155,27 +158,39 @@ public class WordProcessor {
 	    					currentOutputLine = currentOutputLine + " ";
 	    					currentCharCount++;
 	    				}
-    				startParagraph = false;
+    					System.out.println(currentOutputLine+"!");
+    					startParagraph = false;
+    					System.out.println("StartParagraph is : " + startParagraph);
     				}
     				
     				//if wrapping is off
     				//this has to be modified for right,center etc justified
+    				System.out.println("Wrapping is : " + startParagraph);
     				if(!wrapping)
 	    			{
+    					System.out.println("Entered no wrapping paragraph");
 	    				//while the count of characters is less then line length
+    					System.out.println(currentCharCount);
 	    				while(currentCharCount < lineLength)
 	    				{
+	    					System.out.println("Entered currentCharCount is less than length");
 	    					//until we reach a space we construct a word
+	    					System.out.println("this is character:"+currentChar);
 	    					if(!currentChar.equals(" "))
 	    					{
 	    						leftoverWord = leftoverWord + currentChar;
+	    						System.out.println(leftoverWord);
 	    						leftoverCount++;
+	    						System.out.println(leftoverCount);
 	    						currentCharCount++;
+	    						System.out.println(currentCharCount);
 	    					}
 	    					//if we reach the end of the word or in other words space add the word to the output line and end that line as well as adding the count for the space
 	    					else
 	    					{
-	    						currentOutputLine = currentOutputLine + leftoverWord;
+	    						System.out.println("reached end of word");
+	    						currentOutputLine = currentOutputLine + " " + leftoverWord;
+	    						System.out.println(currentOutputLine);
 	    						currentCharCount++;
 	    						leftoverWord = "";
 	    						leftoverCount = 0;
