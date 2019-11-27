@@ -224,7 +224,7 @@ public class WordProcessor {
 	    	}
     		//after we are done with reading in this line we scan in the next input line
     		currentLine=in1.nextLine();
-        	currentChar = Character.toString(in2.next().charAt(0));
+        	currentChar = Character.toString(in2.next().charAt(0));//i think this is wrong...
 	    }
 	 }
 }
