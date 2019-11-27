@@ -47,8 +47,13 @@ public class WordProcessor {
     	String currentChar = Character.toString(currentLine.charAt(0));
     	System.out.println(currentChar);
 	    //start reading the file and keep at it until end of file/there is a next line
-	    while (in1.hasNextLine())
+	    do
 	    {
+	    	currentLine=in1.nextLine();
+    		System.out.println("This is next line read in:");
+    		System.out.println(currentLine);
+    		currentChar = Character.toString(currentLine.charAt(0));
+    		System.out.println("This is next character read in:"+currentChar);
 	    	
 	    	//if it starts with dash it is a command and we need to change defaults
 	    	if(currentChar.equals("-"))
@@ -241,11 +246,8 @@ public class WordProcessor {
     			}
 	    	}
     		//after we are done with reading in this line we scan in the next input line
-    		currentLine=in1.nextLine();
-    		System.out.println("This is next line read in:");
-    		System.out.println(currentLine);
-    		currentChar = Character.toString(currentLine.charAt(0));
-    		System.out.println("This is next character read in:"+currentChar);
+    		
 	    }
+	    while (in1.hasNextLine());
 	 }
 }
