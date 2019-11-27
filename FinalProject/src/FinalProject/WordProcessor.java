@@ -31,9 +31,8 @@ public class WordProcessor {
 	    //variable keeping track of the character count
 	    int currentCharCount = 0;
 	    
-	    //variables holding the word and output line that we are currently reading
+	    //variables holding the output line that we are currently reading
 	    String currentOutputLine = "";
-	    String currentWord = "";
 	    
 	    //variables holding the word leftover from previous line and the count of characters in it
 	    String leftoverWord = "";
@@ -44,7 +43,7 @@ public class WordProcessor {
 	    //reading the line and storing it
     	String currentLine=in1.nextLine();
     	//getting the first character of the line
-    	String currentChar = Character.toString(in2.next().charAt(0));
+    	String currentChar = Character.toString(currentLine.charAt(0));
     	
 	    //start reading the file and keep at it until end of file/there is a next line
 	    while (in1.hasNextLine())
@@ -54,11 +53,14 @@ public class WordProcessor {
 	    	if(currentChar.equals("-"))
 	    	{
 	    		startParagraph = true;
-	    		currentChar = Character.toString(in2.next().charAt(0));
+	    		
+	    		currentChar = Character.toString(currentLine.charAt(1));
 	    		switch(currentChar)
 	    		{
 	    			case("n"):
-	    				int temp1=in2.nextInt(); //we should probably throw error if there is no number following the command n
+	    				//extracting a substring that should contain the number and parsing it as int
+	    				String tempSub = currentLine.substring(2,currentLine.length()-1);
+	    				int temp1=Integer.parseInt(tempSub); //we should probably throw error if there is no number following the command n
 	    				if(temp1<=100)
 	    					lineLength = temp1;
 	    				else //we probably need to change the response to the error to something more appropriate
@@ -77,7 +79,7 @@ public class WordProcessor {
 	    				justified = 'e';
 	    				break;
 	    			case("w"):
-	    				char temp2 = in2.next().charAt(0);
+	    				char temp2 = currentLine.charAt(1);
 	    				if(temp2 == '+')
 	    					wrapping = true;
 	    				else if(temp2 == '-')
@@ -95,7 +97,9 @@ public class WordProcessor {
 	    				title = true;
 	    				break;
 	    			case("p"):
-	    				int temp3=in2.nextInt();
+	    				//extracting a substring that should contain the number and parsing it as int
+	    				String tempSub2 = currentLine.substring(2,currentLine.length()-1);
+	    				int temp3=Integer.parseInt(tempSub2); //we should probably throw error if there is no number following the command n
 	    				//checking if the number of indents exceeds the current number of characters per line
 	    				if(temp3<lineLength)
 	    					paragraph = temp3;
@@ -103,10 +107,14 @@ public class WordProcessor {
 	    					System.out.println("Error: Number of indentd exceeds the line length.");
 	    				break;
 	    			case("b"):
-	    				blankLine =in2.nextInt();
+	    				//extracting a substring that should contain the number and parsing it as int
+	    				String tempSub3 = currentLine.substring(2,currentLine.length()-1);
+	    				blankLine =Integer.parseInt(tempSub3);
 	    				break;
 	    			case("a"):
-	    				int temp4=in2.nextInt();
+	    				//extracting a substring that should contain the number and parsing it as int
+	    				String tempSub4 = currentLine.substring(2,currentLine.length()-1);
+	    				int temp4=Integer.parseInt(tempSub4);
 	    				if(temp4 == 1)
 	    					twoColumns = false;
 	    				else if(temp4 == 2)
@@ -170,7 +178,7 @@ public class WordProcessor {
 	    					//since we consume a character in the read in line we increase the i
 	    					i++;
 	    					//and we fetch next character of the line
-	    					currentChar = Character.toString(currentLine.charAt(i));    					
+	    					currentChar = Character.toString(currentLine.charAt(i));  
 	    				}
 	    				//if it is right justified add the number of leftover spaces in the beginning of the output line
 	    				if(justified == 'r')
@@ -205,8 +213,8 @@ public class WordProcessor {
 	    				{
     						currentOutputLine = currentOutputLine + currentChar;
     						currentCharCount++;
-	    					
-	    					//since we consume a character in the read in line we increase the i
+    						
+    						//since we consume a character in the read in line we increase the i
 	    					i++;
 	    					//and we fetch next character of the line
 	    					currentChar = Character.toString(currentLine.charAt(i));	
@@ -224,7 +232,6 @@ public class WordProcessor {
 	    	}
     		//after we are done with reading in this line we scan in the next input line
     		currentLine=in1.nextLine();
-        	currentChar = Character.toString(in2.next().charAt(0));//i think this is wrong...
 	    }
 	 }
 }
