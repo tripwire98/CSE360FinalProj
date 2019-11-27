@@ -41,13 +41,15 @@ public class WordProcessor {
 	    
 	    boolean startParagraph = true;
 	    
+	    //reading the line and storing it
+    	String currentLine=in1.nextLine();
+    	//getting the first character of the line
+    	String currentChar = Character.toString(in2.next().charAt(0));
+    	
 	    //start reading the file and keep at it until end of file/there is a next line
 	    while (in1.hasNextLine())
 	    {
-	    	//reading the line and storing it
-	    	String currentLine=in1.nextLine();
-	    	//getting the first character of the line
-	    	String currentChar = Character.toString(in2.next().charAt(0));
+	    	
 	    	//if it starts with dash it is a command and we need to change defaults
 	    	if(currentChar.equals("-"))
 	    	{
@@ -180,12 +182,10 @@ public class WordProcessor {
     				else 
     					
     			}
-	    		
-	    		
 	    	}
-	    
+    		//after we are done with reading in this line we scan in the next input line
+    		currentLine=in1.nextLine();
+        	currentChar = Character.toString(in2.next().charAt(0));
 	    }
-
-	    
 	 }
 }
