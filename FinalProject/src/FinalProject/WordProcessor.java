@@ -12,6 +12,8 @@ public class WordProcessor {
 		String fileLocation = "C:\\Users\\brand\\Desktop\\test.txt";
 	    File file = new File(fileLocation); 
 	    Scanner in = new Scanner(file);
+	    //we can change the name of a file that we are outputting to something else
+	    PrintWriter out = new PrintWriter("filename.txt");
 	    
 	    //variables keeping track of commands set to defaults
 	    int lineLength = 80;
@@ -23,10 +25,20 @@ public class WordProcessor {
 	    int blankLine = 0;
 	    boolean twoColumns = false;
 	    
+	    //variable keeping track of the character count
+	    int currentCharCount = 0;
+	    
+	    //variables holding the word and output line that we are currently reading
+	    String currentOutputLine = "";
+	    String currentWord = "";
+	    
 	    //start reading the file and keep at it until end of file/there is a next line
 	    while (in.hasNextLine())
 	    {
-	    	String currentChar = Character.toString(in.next().charAt(0));
+	    	//reading the line and storing it
+	    	String currentLine=in.nextLine();
+	    	//getting the first character of the line
+	    	String currentChar = Character.toString(currentLine.charAt(0));
 	    	//if it starts with dash it is a command and we need to change defaults
 	    	if(currentChar.equals("-"))
 	    	{
@@ -91,6 +103,21 @@ public class WordProcessor {
 	    					System.out.println("Error: You can only choose between 1 or 2 columns.");
 	    				break;	    		
 	    		}
+	    	}
+	    	else//if it starts with letter or space start reading
+	    	{
+	    		for(int i = 0; i<lineLength; i++)
+	    		{
+	    			//if the line does not start with empty space read the line in 
+	    			if(!currentChar.equals(" "))
+	    			{
+	    				//if it is left justified and number of characters is 0 we print the number of indents and then the current character
+	    				for(int j = 0; j<paragraph; j++)
+	    					currentOutputLine = currentOutputLine + " ";
+	    				currentOutputline = currentOutputLine + currentChar;
+	    			}
+	    		}
+	    		
 	    	}
 	    	//an integer holding the count of the characters,
 		    int numChar = 0;
