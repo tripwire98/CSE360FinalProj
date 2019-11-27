@@ -175,12 +175,35 @@ public class WordProcessor {
 	    				//when we reach the maximum character length set for the output we set the char count to leftover char count
 	    				//and we print the line to file using println and we reset the current output line to the word we have left from before
 	    				out.println(currentOutputLine);
+	    				//if it is double spaced print another line after it
+	    				if(space==2)
+	    					out.println();
 	    				currentCharCount = leftoverCount;
 	    				currentOutputLine = leftoverWord;
 	    			}
     				//if wrapping is on
-    				else 
-    					
+    				else
+    				{
+	    				//while the count of characters is less then line length keep constructing the output line
+	    				while(currentCharCount < lineLength)
+	    				{
+    						currentOutputLine = currentOutputLine + currentChar;
+    						currentCharCount++;
+	    					
+	    					//since we consume a character in the read in line we increase the i
+	    					i++;
+	    					//and we fetch next character of the line
+	    					currentChar = Character.toString(currentLine.charAt(i));	
+	    				}
+	    				//when we reach the maximum character length set for the output we set the char count to leftover char count
+	    				//and we print the line to file using println and we reset the current output line to the word we have left from before
+	    				out.println(currentOutputLine);
+	    				//if it is double spaced print another line after it
+	    				if(space==2)
+	    					out.println();
+	    				currentCharCount = 0;
+	    				currentOutputLine = "";
+    				}
     			}
 	    	}
     		//after we are done with reading in this line we scan in the next input line
