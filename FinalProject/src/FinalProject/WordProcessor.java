@@ -121,56 +121,66 @@ public class WordProcessor {
 	    		{
 	    			//reading the character of current line
 	    			currentChar = Character.toString(currentLine.charAt(i));
-	    			//if the line does not start with empty space read the line in 
-	    			if(!currentChar.equals(" "))
-	    			{
-	    				//if it is left justified and number of characters is 0 we print the number of indents and then the current character
-	    				if(justified == 'l' && startParagraph)
+    
+    				//if it is left justified and number of characters is 0 we print the number of indents and then the current character
+    				if(justified == 'l' && startParagraph)
+    				{
+    					for(int j = 0; j<paragraph; j++)
 	    				{
-	    					for(int j = 0; j<paragraph; j++)
-		    				{
-		    					currentOutputLine = currentOutputLine + " ";
-		    					currentCharCount++;
-		    				}
-	    				startParagraph = false;
+	    					currentOutputLine = currentOutputLine + " ";
+	    					currentCharCount++;
 	    				}
-	    				//if wrapping is off
-	    				//this has to be modified for right,center etc justified
-	    				if(!wrapping)
-		    			{
-		    				//while the count of characters is less then line length
-		    				while(currentCharCount < lineLength)
-		    				{
-		    					//until we reach a space we construct a word
-		    					if(!currentChar.equals(" "))
-		    					{
-		    						leftoverWord = leftoverWord + currentChar;
-		    						leftoverCount++;
-		    						currentCharCount++;
-		    					}
-		    					//if we reach the end of the word or in other words space add the word to the output line and end that line as well as adding the count for the space
-		    					else
-		    					{
-		    						currentOutputLine = currentOutputLine + leftoverWord;
-		    						currentCharCount++;
-		    					}
-		    					//since we consume a character in the read in line we increase the i
-		    					i++;
-		    					//and we fetch next character of the line
-		    					currentChar = Character.toString(currentLine.charAt(i));	
-		    				}
-		    				//when we reach the maximum character length set for the output we reset the char count to 0
-		    				currentCharCount = 0;
-		    				//and we print the line to file using println and we reset the current output line
-		    				out.println(currentOutputLine);
-		    				currentOutputLine = "";
-		    				
-		    			}
-	    				//if wrapping is on
-	    				else 
-	    					
+    				startParagraph = false;
+    				}
+    				
+    				//if wrapping is off
+    				//this has to be modified for right,center etc justified
+    				if(!wrapping)
+	    			{
+	    				//while the count of characters is less then line length
+	    				while(currentCharCount < lineLength)
+	    				{
+	    					//until we reach a space we construct a word
+	    					if(!currentChar.equals(" "))
+	    					{
+	    						leftoverWord = leftoverWord + currentChar;
+	    						leftoverCount++;
+	    						currentCharCount++;
+	    					}
+	    					//if we reach the end of the word or in other words space add the word to the output line and end that line as well as adding the count for the space
+	    					else
+	    					{
+	    						currentOutputLine = currentOutputLine + leftoverWord;
+	    						currentCharCount++;
+	    						leftoverWord = "";
+	    						leftoverCount = 0;
+	    					}
+	    					//since we consume a character in the read in line we increase the i
+	    					i++;
+	    					//and we fetch next character of the line
+	    					currentChar = Character.toString(currentLine.charAt(i));	
+	    				}
+	    				//complete the leftover word 
+	    				while(!currentChar.equals(" "))
+	    				{
+	    					leftoverWord = leftoverWord + currentChar;
+    						leftoverCount++;
+	    					//since we consume a character in the read in line we increase the i
+	    					i++;
+	    					//and we fetch next character of the line
+	    					currentChar = Character.toString(currentLine.charAt(i));    					
+	    				}
+	    				//when we reach the maximum character length set for the output we set the char count to leftover char count
+	    				//and we print the line to file using println and we reset the current output line to the word we have left from before
+	    				out.println(currentOutputLine);
+	    				currentCharCount = leftoverCount;
+	    				currentOutputLine = leftoverWord;
 	    			}
-	    		}
+    				//if wrapping is on
+    				else 
+    					
+    			}
+	    		
 	    		
 	    	}
 	    
