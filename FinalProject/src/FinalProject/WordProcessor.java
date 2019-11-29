@@ -14,9 +14,11 @@ public class WordProcessor {
 	    //scanner used in case this line is text 
 	    Scanner in1 = new Scanner(file);
 	    //scanner used in case this line is command
-	    Scanner in2 = new Scanner(file);
+	   // Scanner in2 = new Scanner(file);
 	    //we can change the name of a file that we are outputting to something else
-	    PrintWriter out = new PrintWriter("test1Formatted.txt");
+	    File fout = new File("test1Formatted.txt");
+	   	FileOutputStream fos = new FileOutputStream(fout);
+	    BufferedWriter out = new BufferedWriter(new OutputStreamWriter(fos));
 	    
 	    //variables keeping track of commands set to defaults
 	    int lineLength = 80;
@@ -41,15 +43,16 @@ public class WordProcessor {
 	    boolean startParagraph = true;
 	    
 	    //reading the line and storing it
-    	String currentLine=in1.nextLine();
-    	System.out.println(currentLine);
-    	//getting the first character of the line
-    	String currentChar = Character.toString(currentLine.charAt(0));
-    	System.out.println(currentChar);
+    	//String currentLine=in1.nextLine();
+    	
 	    //start reading the file and keep at it until end of file/there is a next line
 	    do
 	    {
-	    	
+	    	String currentLine=in1.nextLine();
+	    	System.out.println(currentLine);
+	    	//getting the first character of the line
+	    	String currentChar = Character.toString(currentLine.charAt(0));
+	    	System.out.println(currentChar);
     		System.out.println("This is next line read in:");
     		System.out.println(currentLine);
     		currentChar = Character.toString(currentLine.charAt(0));
@@ -139,8 +142,9 @@ public class WordProcessor {
 	    	}
 	    	else//if it starts with letter or space start reading
 	    	{
+	    		System.out.println(currentLine.length());
 	    		//looping through all the characters in the read in txt line
-	    		for(int i = 0; i<currentLine.length(); i++)
+	    		for(int i = 0; i<currentLine.length()-1; i++)
 	    		{
 	    			System.out.println("i in the beggining of for loop line 145: "+i);
 	    			//reading the character of current line
@@ -172,7 +176,7 @@ public class WordProcessor {
     					System.out.println("Entered no wrapping paragraph");
 	    				//while the count of characters is less then line length
     					//System.out.println("CharCount line174"+currentCharCount);
-	    				while(currentCharCount < lineLength)
+	    				while(currentCharCount < lineLength && i<currentLine.length())
 	    				{
 	    					//System.out.println("Entered currentCharCount is less than length, line177");
 	    					//until we reach a space we construct a word
@@ -201,7 +205,8 @@ public class WordProcessor {
 	    					i++;
 	    					System.out.println("i after adding charaster in line 202: "+i);
 	    					//and we fetch next character of the line
-	    					currentChar = Character.toString(currentLine.charAt(i));	
+	    					if(i<currentLine.length())
+	    						currentChar = Character.toString(currentLine.charAt(i));	
 	    					//currentCharCount++;
 	    					//System.out.println("Linelength is: "+lineLength);
 	    					//System.out.println("Current count is"+currentCharCount);
@@ -234,12 +239,13 @@ public class WordProcessor {
 	    				}
 	    				//when we reach the maximum character length set for the output we set the char count to leftover char count
 	    				//and we print the line to file using println and we reset the current output line to the word we have left from before
-	    				out.println(currentOutputLine);
+	    				out.write(currentOutputLine);
+	    				out.newLine();
 	    				System.out.println("Current output line at the end of no wrap part");
 	    				System.out.println(currentOutputLine);
 	    				//if it is double spaced print another line after it
 	    				if(space==2)
-	    					out.println();
+	    					out.newLine();
 	    				//i=i+currentCharCount;
 	    				currentCharCount = leftoverCount;
 	    				System.out.println("Carried over count of characters from the word that needs to start next line is : "+ currentCharCount);
@@ -262,10 +268,10 @@ public class WordProcessor {
 	    				}
 	    				//when we reach the maximum character length set for the output we set the char count to leftover char count
 	    				//and we print the line to file using println and we reset the current output line to the word we have left from before
-	    				out.println(currentOutputLine);
+	    				out.write(currentOutputLine);
 	    				//if it is double spaced print another line after it
 	    				if(space==2)
-	    					out.println();
+	    					out.newLine();
 	    				currentCharCount = 0;
 	    				currentOutputLine = "";
     				}
@@ -275,10 +281,10 @@ public class WordProcessor {
     			}
 	    	}
     		//after we are done with reading in this line we scan in the next input line
-	    	currentLine=in1.nextLine();
-    		in2.hasNextLine();
+	    	
     		
 	    }
-	    while (in2.hasNextLine());
+	    while (in1.hasNextLine());
+	    out.close();
 	 }
 }
