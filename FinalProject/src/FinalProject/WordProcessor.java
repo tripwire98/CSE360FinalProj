@@ -281,8 +281,6 @@ public class WordProcessor {
     			}
 	    	}
     		//after we are done with reading in this line we scan in the next input line
-	    	
-    		
 	    }
 	    while (in1.hasNextLine());
 	    out.close();
