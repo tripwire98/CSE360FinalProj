@@ -49,7 +49,7 @@ public class WordProcessor {
 	    //start reading the file and keep at it until end of file/there is a next line
 	    do
 	    {
-	    	currentLine=in1.nextLine();
+	    	
     		System.out.println("This is next line read in:");
     		System.out.println(currentLine);
     		currentChar = Character.toString(currentLine.charAt(0));
@@ -202,6 +202,8 @@ public class WordProcessor {
 	    					//and we fetch next character of the line
 	    					currentChar = Character.toString(currentLine.charAt(i));	
 	    					//currentCharCount++;
+	    					System.out.println("Linelength is: "+lineLength);
+	    					System.out.println("Current count is"+currentCharCount);
 	    				}
 	    				//complete the leftover word 
 	    				while(!currentChar.equals(" "))
@@ -240,7 +242,7 @@ public class WordProcessor {
 	    				//i=i+currentCharCount;
 	    				currentCharCount = leftoverCount;
 	    				System.out.println("Carried over count of characters from the word that needs to start next line is : "+ currentCharCount);
-	    				currentOutputLine = leftoverWord;
+	    				currentOutputLine = "";//leftoverWord;
 	    				System.out.println("Carried over word that needs to start next line is : "+ currentOutputLine);
 	    			}
     				//if wrapping is on
@@ -267,11 +269,13 @@ public class WordProcessor {
 	    				currentOutputLine = "";
     				}
     				System.out.println("Starting the next output line with the i="+i+" and the current count of characters = "+currentCharCount);
+    				
     			}
 	    	}
     		//after we are done with reading in this line we scan in the next input line
-    		
+	    	currentLine=in1.nextLine();
+    		in2.hasNextLine();
 	    }
-	    while (in1.hasNextLine());
+	    while (in2.hasNextLine());
 	 }
 }
