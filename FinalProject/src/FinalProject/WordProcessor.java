@@ -151,7 +151,16 @@ public class WordProcessor {
 		    			//reading the character of current line
 		    			currentChar = Character.toString(currentLine.charAt(i));
 		    			//System.out.println("Character at " +i+" is" + currentChar);
-	    
+		    			
+		    			//if title is on and the line length is longer than count give an errr but still format the appropriate length of it
+		    			if(title && (currentLine.length() != lineLength))
+		    				System.out.println("Error: Title has to fit on one line, with the length specified by user");
+		    			else if(title)
+		    			{
+		    				
+		    			}
+		    			//else if we are starting paragraph
+		    			
 	    				//if it is left justified and number of characters is 0 we print the number of indents and then the current character
 		    			System.out.println("Justification is: " + justified);
 		    			System.out.println("StartParagraph is : " + startParagraph);
@@ -168,7 +177,6 @@ public class WordProcessor {
 	    					//System.out.println("StartParagraph is : " + startParagraph);
 	    					//i=currentCharCount;
 	    				}
-	    				
 	    				//if wrapping is off
 	    				//this has to be modified for right,center etc justified
 	    				System.out.println("Wrapping is : " + wrapping);
@@ -313,5 +321,6 @@ public class WordProcessor {
 	    }
 	    while (in1.hasNextLine());
 	    out.close();
+	    in1.close();
 	 }
 }
