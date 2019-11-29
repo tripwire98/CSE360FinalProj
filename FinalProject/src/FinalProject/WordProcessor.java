@@ -212,16 +212,6 @@ public class WordProcessor {
 		    					//System.out.println("Linelength is: "+lineLength);
 		    					//System.out.println("Current count is"+currentCharCount);
 		    				}
-		    				//complete the leftover word 
-		    				while(!currentChar.equals(" "))
-		    				{
-		    					leftoverWord = leftoverWord + currentChar;
-	    						leftoverCount++;
-		    					//since we consume a character in the read in line we increase the i
-		    					i++;
-		    					//and we fetch next character of the line
-		    					currentChar = Character.toString(currentLine.charAt(i));  
-		    				}
 		    				//if it is right justified add the number of leftover spaces in the beginning of the output line
 		    				if(justified == 'r')
 		    				{
@@ -238,6 +228,17 @@ public class WordProcessor {
 		    						currentOutputLine = " " + currentOutputLine;
 		    					}
 		    				}
+		    				//complete the leftover word 
+		    				while(!currentChar.equals(" "))
+		    				{
+		    					leftoverWord = leftoverWord + currentChar;
+	    						leftoverCount++;
+		    					//since we consume a character in the read in line we increase the i
+		    					i++;
+		    					//and we fetch next character of the line
+		    					currentChar = Character.toString(currentLine.charAt(i));  
+		    				}
+		    				
 		    				//when we reach the maximum character length set for the output we set the char count to leftover char count
 		    				//and we print the line to file using println and we reset the current output line to the word we have left from before
 		    				out.write(currentOutputLine);
@@ -257,9 +258,9 @@ public class WordProcessor {
 	    				else
 	    				{
 		    				//while the count of characters is less then line length keep constructing the output line
-		    				while(currentCharCount < lineLength)
+		    				while(currentCharCount < lineLength&& i<currentLine.length())
 		    				{
-	    						currentOutputLine = currentOutputLine + currentChar;
+		    					currentOutputLine = currentOutputLine + leftoverWord+ " " ;
 	    						currentCharCount++;
 	    						
 	    						//since we consume a character in the read in line we increase the i
