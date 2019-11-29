@@ -142,10 +142,10 @@ public class WordProcessor {
 	    		//looping through all the characters in the read in txt line
 	    		for(int i = 0; i<currentLine.length(); i++)
 	    		{
-	    			System.out.println(i);
+	    			System.out.println("i in the beggining of for loop line 145: "+i);
 	    			//reading the character of current line
 	    			currentChar = Character.toString(currentLine.charAt(i));
-	    			System.out.println("Character at " +i+" is" + currentChar);
+	    			//System.out.println("Character at " +i+" is" + currentChar);
     
     				//if it is left justified and number of characters is 0 we print the number of indents and then the current character
 	    			System.out.println("Justification is: " + justified);
@@ -158,9 +158,9 @@ public class WordProcessor {
 	    					currentOutputLine = currentOutputLine + " ";
 	    					currentCharCount++;
 	    				}
-    					System.out.println(currentOutputLine+"!");
+    					//System.out.println(currentOutputLine+"!");
     					startParagraph = false;
-    					System.out.println("StartParagraph is : " + startParagraph);
+    					//System.out.println("StartParagraph is : " + startParagraph);
     					//i=currentCharCount;
     				}
     				
@@ -171,20 +171,20 @@ public class WordProcessor {
 	    			{
     					System.out.println("Entered no wrapping paragraph");
 	    				//while the count of characters is less then line length
-    					System.out.println("CharCount line174"+currentCharCount);
+    					//System.out.println("CharCount line174"+currentCharCount);
 	    				while(currentCharCount < lineLength)
 	    				{
-	    					System.out.println("Entered currentCharCount is less than length, line177");
+	    					//System.out.println("Entered currentCharCount is less than length, line177");
 	    					//until we reach a space we construct a word
-	    					System.out.println("this is character:"+currentChar);
+	    					//System.out.println("this is character:"+currentChar);
 	    					if(!currentChar.equals(" "))
 	    					{
 	    						leftoverWord = leftoverWord + currentChar;
-	    						System.out.println(leftoverWord);
+	    						//System.out.println(leftoverWord);
 	    						leftoverCount++;
-	    						System.out.println("count of the word being processed"+leftoverCount);
+	    						//System.out.println("count of the word being processed"+leftoverCount);
 	    						currentCharCount++;
-	    						System.out.println("total count of characters"+currentCharCount);
+	    						//System.out.println("total count of characters"+currentCharCount);
 	    					}
 	    					//if we reach the end of the word or in other words space add the word to the output line and end that line as well as adding the count for the space
 	    					else
@@ -199,11 +199,12 @@ public class WordProcessor {
 	    					}
 	    					//since we consume a character in the read in line we increase the i
 	    					i++;
+	    					System.out.println("i after adding charaster in line 202: "+i);
 	    					//and we fetch next character of the line
 	    					currentChar = Character.toString(currentLine.charAt(i));	
 	    					//currentCharCount++;
-	    					System.out.println("Linelength is: "+lineLength);
-	    					System.out.println("Current count is"+currentCharCount);
+	    					//System.out.println("Linelength is: "+lineLength);
+	    					//System.out.println("Current count is"+currentCharCount);
 	    				}
 	    				//complete the leftover word 
 	    				while(!currentChar.equals(" "))
@@ -243,7 +244,7 @@ public class WordProcessor {
 	    				currentCharCount = leftoverCount;
 	    				System.out.println("Carried over count of characters from the word that needs to start next line is : "+ currentCharCount);
 	    				currentOutputLine = "";//leftoverWord;
-	    				System.out.println("Carried over word that needs to start next line is : "+ currentOutputLine);
+	    				//System.out.println("Carried over word that needs to start next line is : "+ currentOutputLine);
 	    			}
     				//if wrapping is on
     				else
@@ -268,6 +269,7 @@ public class WordProcessor {
 	    				currentCharCount = 0;
 	    				currentOutputLine = "";
     				}
+    				i--;
     				System.out.println("Starting the next output line with the i="+i+" and the current count of characters = "+currentCharCount);
     				
     			}
@@ -275,6 +277,7 @@ public class WordProcessor {
     		//after we are done with reading in this line we scan in the next input line
 	    	currentLine=in1.nextLine();
     		in2.hasNextLine();
+    		
 	    }
 	    while (in2.hasNextLine());
 	 }
