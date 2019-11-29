@@ -9,7 +9,7 @@ public class WordProcessor {
 	 { 
 		//change the file location to where the test.txt is on your desktop, we will implement a system that works better
 		//for getting the location later on but this works for now
-		String fileLocation = "C:\\Users\\mojca\\Desktop\\test1.txt";
+		String fileLocation = "test1.txt";
 	    File file = new File(fileLocation);
 	    //scanner used in case this line is text 
 	    Scanner in1 = new Scanner(file);
@@ -71,13 +71,13 @@ public class WordProcessor {
 	    			case("n"):
 	    				//extracting a substring that should contain the number and parsing it as int
 	    				String tempSub = currentLine.substring(2,currentLine.length());
-	    				System.out.println("Case n, with following:"+tempSub);
+	    				//System.out.println("Case n, with following:"+tempSub);
 	    				int temp1=Integer.parseInt(tempSub); //we should probably throw error if there is no number following the command n
-	    				System.out.println("Case n, with number argument:"+temp1);
+	    				//System.out.println("Case n, with number argument:"+temp1);
 	    				if(temp1<=100)
 	    				{
 	    					lineLength = temp1;
-	    					System.out.println("Case n changing line length to:"+lineLength);
+	    					//System.out.println("Case n changing line length to:"+lineLength);
 	    				}
 	    				else //we probably need to change the response to the error to something more appropriate
 	    					System.out.println("Error: Lenght selection exceeds maximum!");
@@ -95,7 +95,7 @@ public class WordProcessor {
 	    				justified = 'e';
 	    				break;
 	    			case("w"):
-	    				char temp2 = currentLine.charAt(1);
+	    				char temp2 = currentLine.charAt(2);
 	    				if(temp2 == '+')
 	    					wrapping = true;
 	    				else if(temp2 == '-')
@@ -257,25 +257,47 @@ public class WordProcessor {
 	    				//if wrapping is on
 	    				else
 	    				{
+	    					System.out.println("entering the no wrap else statements");
 		    				//while the count of characters is less then line length keep constructing the output line
-		    				while(currentCharCount < lineLength&& i<currentLine.length())
+		    				while(currentCharCount < lineLength&& i<currentLine.length()-1)
 		    				{
-		    					currentOutputLine = currentOutputLine + leftoverWord+ " " ;
+		    					System.out.println("current character is " + currentChar +"at the current character count " + currentCharCount + " with the i "+ i);
+		    					currentOutputLine = currentOutputLine + currentChar;
+		    					System.out.println("current output line is "+ currentOutputLine);
 	    						currentCharCount++;
-	    						
 	    						//since we consume a character in the read in line we increase the i
 		    					i++;
 		    					//and we fetch next character of the line
 		    					currentChar = Character.toString(currentLine.charAt(i));	
 		    				}
+		    				//if it is right justified add the number of leftover spaces in the beginning of the output line
+		    				if(justified == 'r')
+		    				{
+		    					for(int k = 1; k <= leftoverCount; k++)
+		    					{
+		    						currentOutputLine = " " + currentOutputLine;
+		    					}
+		    				}
+		    				//if it is center justified divide the number of leftover count in 2 and add half in the beginning
+		    				if(justified == 'c')
+		    				{
+		    					for(int k = 1; k <= leftoverCount/2; k++)
+		    					{
+		    						currentOutputLine = " " + currentOutputLine;
+		    					}
+		    				}
 		    				//when we reach the maximum character length set for the output we set the char count to leftover char count
 		    				//and we print the line to file using println and we reset the current output line to the word we have left from before
+		    				//if it is double spaced print another line after it
 		    				out.write(currentOutputLine);
+		    				out.newLine();
+		    				System.out.println("Current output line at the end of wrap part");
+		    				System.out.println(currentOutputLine);
 		    				//if it is double spaced print another line after it
 		    				if(space==2)
 		    					out.newLine();
-		    				currentCharCount = 0;
 		    				currentOutputLine = "";
+		    				currentCharCount = 0;
 	    				}
 	    				i--;
 	    				System.out.println("Starting the next output line with the i="+i+" and the current count of characters = "+currentCharCount);
