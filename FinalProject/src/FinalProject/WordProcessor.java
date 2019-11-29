@@ -140,147 +140,153 @@ public class WordProcessor {
 	    				break;	    		
 	    		}
 	    	}
-	    	else//if it starts with letter or space start reading
+	    	//if columns are not set to 2 columns
+	    	else if(!twoColumns)
 	    	{
-	    		System.out.println(currentLine.length());
-	    		//looping through all the characters in the read in txt line
-	    		for(int i = 0; i<currentLine.length()-1; i++)
-	    		{
-	    			System.out.println("i in the beggining of for loop line 145: "+i);
-	    			//reading the character of current line
-	    			currentChar = Character.toString(currentLine.charAt(i));
-	    			//System.out.println("Character at " +i+" is" + currentChar);
-    
-    				//if it is left justified and number of characters is 0 we print the number of indents and then the current character
-	    			System.out.println("Justification is: " + justified);
-	    			System.out.println("StartParagraph is : " + startParagraph);
-	    			System.out.println("indent count is : " + paragraph);
-    				if(justified == 'l' && startParagraph)
-    				{
-    					for(int j = 0; j<paragraph; j++)
+		    		System.out.println(currentLine.length());
+		    		//looping through all the characters in the read in txt line
+		    		for(int i = 0; i<currentLine.length()-1; i++)
+		    		{
+		    			System.out.println("i in the beggining of for loop line 145: "+i);
+		    			//reading the character of current line
+		    			currentChar = Character.toString(currentLine.charAt(i));
+		    			//System.out.println("Character at " +i+" is" + currentChar);
+	    
+	    				//if it is left justified and number of characters is 0 we print the number of indents and then the current character
+		    			System.out.println("Justification is: " + justified);
+		    			System.out.println("StartParagraph is : " + startParagraph);
+		    			System.out.println("indent count is : " + paragraph);
+	    				if(justified == 'l' && startParagraph)
 	    				{
-	    					currentOutputLine = currentOutputLine + " ";
-	    					currentCharCount++;
+	    					for(int j = 0; j<paragraph; j++)
+		    				{
+		    					currentOutputLine = currentOutputLine + " ";
+		    					currentCharCount++;
+		    				}
+	    					//System.out.println(currentOutputLine+"!");
+	    					startParagraph = false;
+	    					//System.out.println("StartParagraph is : " + startParagraph);
+	    					//i=currentCharCount;
 	    				}
-    					//System.out.println(currentOutputLine+"!");
-    					startParagraph = false;
-    					//System.out.println("StartParagraph is : " + startParagraph);
-    					//i=currentCharCount;
-    				}
-    				
-    				//if wrapping is off
-    				//this has to be modified for right,center etc justified
-    				System.out.println("Wrapping is : " + wrapping);
-    				if(!wrapping)
-	    			{
-    					System.out.println("Entered no wrapping paragraph");
-	    				//while the count of characters is less then line length
-    					//System.out.println("CharCount line174"+currentCharCount);
-	    				while(currentCharCount < lineLength && i<currentLine.length())
-	    				{
-	    					//System.out.println("Entered currentCharCount is less than length, line177");
-	    					//until we reach a space we construct a word
-	    					//System.out.println("this is character:"+currentChar);
-	    					if(!currentChar.equals(" "))
-	    					{
-	    						leftoverWord = leftoverWord + currentChar;
-	    						//System.out.println(leftoverWord);
+	    				
+	    				//if wrapping is off
+	    				//this has to be modified for right,center etc justified
+	    				System.out.println("Wrapping is : " + wrapping);
+	    				if(!wrapping)
+		    			{
+	    					System.out.println("Entered no wrapping paragraph");
+		    				//while the count of characters is less then line length
+	    					//System.out.println("CharCount line174"+currentCharCount);
+		    				while(currentCharCount < lineLength && i<currentLine.length())
+		    				{
+		    					//System.out.println("Entered currentCharCount is less than length, line177");
+		    					//until we reach a space we construct a word
+		    					//System.out.println("this is character:"+currentChar);
+		    					if(!currentChar.equals(" "))
+		    					{
+		    						leftoverWord = leftoverWord + currentChar;
+		    						//System.out.println(leftoverWord);
+		    						leftoverCount++;
+		    						//System.out.println("count of the word being processed"+leftoverCount);
+		    						currentCharCount++;
+		    						//System.out.println("total count of characters"+currentCharCount);
+		    					}
+		    					//if we reach the end of the word or in other words space add the word to the output line and end that line as well as adding the count for the space
+		    					else
+		    					{
+		    						System.out.println("reached end of word");
+		    						currentOutputLine = currentOutputLine + leftoverWord+ " " ;
+		    						System.out.println(currentOutputLine);
+		    						currentCharCount++;
+		    						leftoverWord = "";
+		    						leftoverCount = 0;
+		    						System.out.println(currentCharCount);
+		    					}
+		    					//since we consume a character in the read in line we increase the i
+		    					i++;
+		    					System.out.println("i after adding charaster in line 202: "+i);
+		    					//and we fetch next character of the line
+		    					if(i<currentLine.length())
+		    						currentChar = Character.toString(currentLine.charAt(i));	
+		    					//currentCharCount++;
+		    					//System.out.println("Linelength is: "+lineLength);
+		    					//System.out.println("Current count is"+currentCharCount);
+		    				}
+		    				//complete the leftover word 
+		    				while(!currentChar.equals(" "))
+		    				{
+		    					leftoverWord = leftoverWord + currentChar;
 	    						leftoverCount++;
-	    						//System.out.println("count of the word being processed"+leftoverCount);
+		    					//since we consume a character in the read in line we increase the i
+		    					i++;
+		    					//and we fetch next character of the line
+		    					currentChar = Character.toString(currentLine.charAt(i));  
+		    				}
+		    				//if it is right justified add the number of leftover spaces in the beginning of the output line
+		    				if(justified == 'r')
+		    				{
+		    					for(int k = 1; k <= leftoverCount; k++)
+		    					{
+		    						currentOutputLine = " " + currentOutputLine;
+		    					}
+		    				}
+		    				//if it is center justified divide the number of leftover count in 2 and add half in the beginning
+		    				if(justified == 'c')
+		    				{
+		    					for(int k = 1; k <= leftoverCount/2; k++)
+		    					{
+		    						currentOutputLine = " " + currentOutputLine;
+		    					}
+		    				}
+		    				//when we reach the maximum character length set for the output we set the char count to leftover char count
+		    				//and we print the line to file using println and we reset the current output line to the word we have left from before
+		    				out.write(currentOutputLine);
+		    				out.newLine();
+		    				System.out.println("Current output line at the end of no wrap part");
+		    				System.out.println(currentOutputLine);
+		    				//if it is double spaced print another line after it
+		    				if(space==2)
+		    					out.newLine();
+		    				//i=i+currentCharCount;
+		    				currentCharCount = leftoverCount;
+		    				System.out.println("Carried over count of characters from the word that needs to start next line is : "+ currentCharCount);
+		    				currentOutputLine = "";//leftoverWord;
+		    				//System.out.println("Carried over word that needs to start next line is : "+ currentOutputLine);
+		    			}
+	    				//if wrapping is on
+	    				else
+	    				{
+		    				//while the count of characters is less then line length keep constructing the output line
+		    				while(currentCharCount < lineLength)
+		    				{
+	    						currentOutputLine = currentOutputLine + currentChar;
 	    						currentCharCount++;
-	    						//System.out.println("total count of characters"+currentCharCount);
-	    					}
-	    					//if we reach the end of the word or in other words space add the word to the output line and end that line as well as adding the count for the space
-	    					else
-	    					{
-	    						System.out.println("reached end of word");
-	    						currentOutputLine = currentOutputLine + leftoverWord+ " " ;
-	    						System.out.println(currentOutputLine);
-	    						currentCharCount++;
-	    						leftoverWord = "";
-	    						leftoverCount = 0;
-	    						System.out.println(currentCharCount);
-	    					}
-	    					//since we consume a character in the read in line we increase the i
-	    					i++;
-	    					System.out.println("i after adding charaster in line 202: "+i);
-	    					//and we fetch next character of the line
-	    					if(i<currentLine.length())
-	    						currentChar = Character.toString(currentLine.charAt(i));	
-	    					//currentCharCount++;
-	    					//System.out.println("Linelength is: "+lineLength);
-	    					//System.out.println("Current count is"+currentCharCount);
+	    						
+	    						//since we consume a character in the read in line we increase the i
+		    					i++;
+		    					//and we fetch next character of the line
+		    					currentChar = Character.toString(currentLine.charAt(i));	
+		    				}
+		    				//when we reach the maximum character length set for the output we set the char count to leftover char count
+		    				//and we print the line to file using println and we reset the current output line to the word we have left from before
+		    				out.write(currentOutputLine);
+		    				//if it is double spaced print another line after it
+		    				if(space==2)
+		    					out.newLine();
+		    				currentCharCount = 0;
+		    				currentOutputLine = "";
 	    				}
-	    				//complete the leftover word 
-	    				while(!currentChar.equals(" "))
-	    				{
-	    					leftoverWord = leftoverWord + currentChar;
-    						leftoverCount++;
-	    					//since we consume a character in the read in line we increase the i
-	    					i++;
-	    					//and we fetch next character of the line
-	    					currentChar = Character.toString(currentLine.charAt(i));  
-	    				}
-	    				//if it is right justified add the number of leftover spaces in the beginning of the output line
-	    				if(justified == 'r')
-	    				{
-	    					for(int k = 1; k <= leftoverCount; k++)
-	    					{
-	    						currentOutputLine = " " + currentOutputLine;
-	    					}
-	    				}
-	    				//if it is center justified divide the number of leftover count in 2 and add half in the beginning
-	    				if(justified == 'c')
-	    				{
-	    					for(int k = 1; k <= leftoverCount/2; k++)
-	    					{
-	    						currentOutputLine = " " + currentOutputLine;
-	    					}
-	    				}
-	    				//when we reach the maximum character length set for the output we set the char count to leftover char count
-	    				//and we print the line to file using println and we reset the current output line to the word we have left from before
-	    				out.write(currentOutputLine);
-	    				out.newLine();
-	    				System.out.println("Current output line at the end of no wrap part");
-	    				System.out.println(currentOutputLine);
-	    				//if it is double spaced print another line after it
-	    				if(space==2)
-	    					out.newLine();
-	    				//i=i+currentCharCount;
-	    				currentCharCount = leftoverCount;
-	    				System.out.println("Carried over count of characters from the word that needs to start next line is : "+ currentCharCount);
-	    				currentOutputLine = "";//leftoverWord;
-	    				//System.out.println("Carried over word that needs to start next line is : "+ currentOutputLine);
-	    			}
-    				//if wrapping is on
-    				else
-    				{
-	    				//while the count of characters is less then line length keep constructing the output line
-	    				while(currentCharCount < lineLength)
-	    				{
-    						currentOutputLine = currentOutputLine + currentChar;
-    						currentCharCount++;
-    						
-    						//since we consume a character in the read in line we increase the i
-	    					i++;
-	    					//and we fetch next character of the line
-	    					currentChar = Character.toString(currentLine.charAt(i));	
-	    				}
-	    				//when we reach the maximum character length set for the output we set the char count to leftover char count
-	    				//and we print the line to file using println and we reset the current output line to the word we have left from before
-	    				out.write(currentOutputLine);
-	    				//if it is double spaced print another line after it
-	    				if(space==2)
-	    					out.newLine();
-	    				currentCharCount = 0;
-	    				currentOutputLine = "";
-    				}
-    				i--;
-    				System.out.println("Starting the next output line with the i="+i+" and the current count of characters = "+currentCharCount);
-    				
-    			}
-	    	}
+	    				i--;
+	    				System.out.println("Starting the next output line with the i="+i+" and the current count of characters = "+currentCharCount);
+		    	}
+	    	
     		//after we are done with reading in this line we scan in the next input line
+	    	}
+	    	//if two columns are on
+	    	else
+	    	{
+	    		lineLength = 35;
+	    	}
 	    }
 	    while (in1.hasNextLine());
 	    out.close();
