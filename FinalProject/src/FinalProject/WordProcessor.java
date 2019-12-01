@@ -4,19 +4,29 @@ import java.io.*;
 import java.util.Scanner; 
 import java.util.*;
 
+//Issue on line 200 with indexes out of range, 
+
+
 public class WordProcessor {
 	public static void main(String[] args)throws Exception 
 	 { 
+		
 		//change the file location to where the test.txt is on your desktop, we will implement a system that works better
 		//for getting the location later on but this works for now
-		String fileLocation = "test1.txt";
+		
+		//you need to change these files to where they are on your pc
+		String fileLocation = "C:\\Users\\brand\\Desktop\\test1.txt";
 	    File file = new File(fileLocation);
+	    
 	    //scanner used in case this line is text 
 	    Scanner in1 = new Scanner(file);
 	    //scanner used in case this line is command
 	   // Scanner in2 = new Scanner(file);
 	    //we can change the name of a file that we are outputting to something else
-	    File fout = new File("test1Formatted.txt");
+	    
+	    //you need to change these files to where they are on your pc
+	    File fout = new File("C:\\Users\\brand\\Desktop\\test1done.txt");
+	    
 	   	FileOutputStream fos = new FileOutputStream(fout);
 	    BufferedWriter out = new BufferedWriter(new OutputStreamWriter(fos));
 	    
@@ -84,12 +94,15 @@ public class WordProcessor {
 	    				break;
 	    			case("r"):
 	    				justified = 'r';
+	    				RightJustified();
 	    				break;
 	    			case("l"):
 	    				justified = 'l';
+	    				LeftJustified();
 	    				break;
 	    			case("c"):
 	    				justified = 'c';
+	    				CenterJustified();
 	    				break;
 	    			case("e"):
 	    				justified = 'e';
@@ -143,7 +156,7 @@ public class WordProcessor {
 	    	//if columns are not set to 2 columns
 	    	else if(!twoColumns)
 	    	{
-		    		System.out.println(currentLine.length());
+		    		System.out.println(currentLine.length()-1);
 		    		//looping through all the characters in the read in txt line
 		    		for(int i = 0; i<currentLine.length()-1; i++)
 		    		{
@@ -185,17 +198,21 @@ public class WordProcessor {
 	    					System.out.println("Entered no wrapping paragraph");
 		    				//while the count of characters is less then line length
 	    					//System.out.println("CharCount line174"+currentCharCount);
+	    					
+	    					/////////////////////////////////////////////////////////////////////
+	    					//THis while loop is haveing an issue with indexs out of range wasent able to figure it out
+	    					//before i had to stop working on it, if anyone is haveing this issue
 		    				while(currentCharCount < lineLength && i<currentLine.length())
 		    				{
 		    					//System.out.println("Entered currentCharCount is less than length, line177");
 		    					//until we reach a space we construct a word
 		    					//System.out.println("this is character:"+currentChar);
-		    					if(!currentChar.equals(" "))
+		    					if(!currentChar.equals(" ") || currentChar.equals(null))
 		    					{
 		    						leftoverWord = leftoverWord + currentChar;
 		    						//System.out.println(leftoverWord);
 		    						leftoverCount++;
-		    						//System.out.println("count of the word being processed"+leftoverCount);
+		    						System.out.println("count of the word being processed"+leftoverCount);
 		    						currentCharCount++;
 		    						//System.out.println("total count of characters"+currentCharCount);
 		    					}
@@ -212,9 +229,9 @@ public class WordProcessor {
 		    					}
 		    					//since we consume a character in the read in line we increase the i
 		    					i++;
-		    					System.out.println("i after adding charaster in line 202: "+i);
+		    					System.out.println("i after adding character in line 202: "+i);
 		    					//and we fetch next character of the line
-		    					if(i<currentLine.length())
+		    					if(i<currentLine.length()-1)
 		    						currentChar = Character.toString(currentLine.charAt(i));	
 		    					//currentCharCount++;
 		    					//System.out.println("Linelength is: "+lineLength);
@@ -267,7 +284,7 @@ public class WordProcessor {
 	    				{
 	    					System.out.println("entering the no wrap else statements");
 		    				//while the count of characters is less then line length keep constructing the output line
-		    				while(currentCharCount < lineLength&& i<currentLine.length()-1)
+		    				while(currentCharCount < lineLength && i<currentLine.length()-1)
 		    				{
 		    					System.out.println("current character is " + currentChar +"at the current character count " + currentCharCount + " with the i "+ i);
 		    					currentOutputLine = currentOutputLine + currentChar;
@@ -323,4 +340,15 @@ public class WordProcessor {
 	    out.close();
 	    in1.close();
 	 }
+	
+	public static void RightJustified() {
+		System.out.println("Right working");
+	}
+	public static void LeftJustified() {
+		System.out.println("left working");
+	}
+	public static void CenterJustified() {
+		System.out.println("center working");
+	}
 }
+
