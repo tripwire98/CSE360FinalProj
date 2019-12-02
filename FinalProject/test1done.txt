@@ -1,6 +1,4 @@
-it is turning 
-wrapping/merging on 
-or off disregarding 
-newlines (using as 
-much space on the 
-line as possible) 
+              it is turning into a wonderful day and i cannot see what could possible 
+                            go wrong even thought things might go wrong 
+                            it is turning into a wonderful day and i cannot see what could possible 
+                                                        go wrong even thought things might go wrong 

@@ -1,3 +1,7 @@
--n20
--w-
-it is turning wrapping/merging on or off disregarding newlines (using as much space on the line as possible) 
+-n100
+-c
+it is turning into a wonderful day and i cannot see what could possible 
+go wrong even thought things might go wrong 
+-r
+it is turning into a wonderful day and i cannot see what could possible 
+go wrong even thought things might go wrong 
