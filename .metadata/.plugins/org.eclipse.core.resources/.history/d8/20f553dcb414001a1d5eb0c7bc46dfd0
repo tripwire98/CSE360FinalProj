@@ -15,7 +15,7 @@ public class WordProcessor {
 		//for getting the location later on but this works for now
 		
 		//you need to change these files to where they are on your pc
-		String fileLocation = "test2.txt";
+		String fileLocation = "C:\\Users\\brand\\Desktop\\test1.txt";
 	    File file = new File(fileLocation);
 	    
 	    //scanner used in case this line is text 
@@ -25,7 +25,7 @@ public class WordProcessor {
 	    //we can change the name of a file that we are outputting to something else
 	    
 	    //you need to change these files to where they are on your pc
-	    File fout = new File("test1done.txt");
+	    File fout = new File("C:\\Users\\brand\\Desktop\\test1done.txt");
 	    
 	   	FileOutputStream fos = new FileOutputStream(fout);
 	    BufferedWriter out = new BufferedWriter(new OutputStreamWriter(fos));
@@ -231,7 +231,7 @@ public class WordProcessor {
 		    					i++;
 		    					System.out.println("i after adding character in line 202: "+i);
 		    					//and we fetch next character of the line
-		    					if(i<currentLine.length())
+		    					if(i<currentLine.length()-1)
 		    						currentChar = Character.toString(currentLine.charAt(i));	
 		    					//currentCharCount++;
 		    					//System.out.println("Linelength is: "+lineLength);

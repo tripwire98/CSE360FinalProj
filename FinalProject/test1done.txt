@@ -1,0 +1,6 @@
+it is turning 
+wrapping/merging on 
+or off disregarding 
+newlines (using as 
+much space on the 
+line as possible) 
