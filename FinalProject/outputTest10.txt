@@ -5,7 +5,6 @@ ng/merging on or off
  disregarding newlin 
 es (using as much sp 
 ace on the line as p 
-
      ossible)it is turning wra 
 
 pping/merging on or off disreg 
@@ -15,9 +14,6 @@ arding newlines (using as much
  space on the line as possible 
 
 
+The input file had 1 errors:
 
-The input file had 3 errors:
-
-Error on line 0 : Paragraph indent can only be used with left justification
-Error on line 0 : Paragraph indent can only be used with left justification
 Error on line 0 : Paragraph indent can only be used with left justification

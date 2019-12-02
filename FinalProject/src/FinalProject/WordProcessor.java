@@ -205,6 +205,12 @@ public class WordProcessor {
 		    			//else if we are starting paragraph
 		    			
 	    				//if it is left justified and number of characters is 0 we print the number of indents and then the current character
+		    			if(justified == 'l' && paragraph != 0 && startParagraph)
+		    			{
+		    				errCount++;
+	    					errLog.write("Error on line " + lineReadInCount + " : Paragraph indent can only be used with left justification");
+	    					errLog.newLine();
+		    			}
 		    			if(justified == 'l' && startParagraph)
 	    				{
 	    					for(int j = 0; j<paragraph; j++)
@@ -214,12 +220,7 @@ public class WordProcessor {
 		    				}
 	    					startParagraph = false;
 	    				}
-		    			else if(justified == 'l' && paragraph !=0)
-		    			{
-		    				errCount++;
-	    					errLog.write("Error on line " + lineReadInCount + " : Paragraph indent can only be used with left justification");
-	    					errLog.newLine();
-		    			}
+		    			
 	    				//if wrapping is off
 	    			
 		    			if(!wrapping)
