@@ -1,5 +1,4 @@
 package FinalProject;
-import java.io.File; 
 import java.io.*;
 import java.util.Scanner; 
 import java.util.*;
@@ -15,7 +14,7 @@ public class WordProcessor {
 		//for getting the location later on but this works for now
 		
 		//you need to change these files to where they are on your pc
-		String fileLocation = "test2.txt";
+		String fileLocation = "test10.txt";
 	    File file = new File(fileLocation);
 	    
 	    //scanner used in case this line is text 
@@ -25,10 +24,17 @@ public class WordProcessor {
 	    //we can change the name of a file that we are outputting to something else
 	    
 	    //you need to change these files to where they are on your pc
-	    File fout = new File("test1done.txt");
+	    File fout = new File("test10done.txt");
 	    
 	   	FileOutputStream fos = new FileOutputStream(fout);
 	    BufferedWriter out = new BufferedWriter(new OutputStreamWriter(fos));
+	    
+	    File errorLog = new File("errorLogtest10.txt");
+	    
+	    FileOutputStream errors = new FileOutputStream(errorLog);
+	    BufferedWriter errLog = new BufferedWriter(new OutputStreamWriter(errors));
+	    int errCount = 0;
+	    int lineReadInCount = 0;
 	    
 	    //variables keeping track of commands set to defaults
 	    int lineLength = 80;
@@ -59,38 +65,36 @@ public class WordProcessor {
 	    do
 	    {
 	    	String currentLine=in1.nextLine();
-	    	System.out.println(currentLine);
+	    	
 	    	//getting the first character of the line
 	    	String currentChar = Character.toString(currentLine.charAt(0));
-	    	System.out.println(currentChar);
-    		System.out.println("This is next line read in:");
-    		System.out.println(currentLine);
-    		currentChar = Character.toString(currentLine.charAt(0));
-    		System.out.println("This is next character read in:"+currentChar);
 	    	
+    		currentChar = Character.toString(currentLine.charAt(0));
+    		
 	    	//if it starts with dash it is a command and we need to change defaults
 	    	if(currentChar.equals("-"))
 	    	{
-	    		System.out.println("entered comand if.");
 	    		startParagraph = true;
 	    		
 	    		currentChar = Character.toString(currentLine.charAt(1));
-	    		System.out.println("this is command:"+currentChar);
+	    		
 	    		switch(currentChar)
 	    		{
 	    			case("n"):
 	    				//extracting a substring that should contain the number and parsing it as int
 	    				String tempSub = currentLine.substring(2,currentLine.length());
-	    				//System.out.println("Case n, with following:"+tempSub);
 	    				int temp1=Integer.parseInt(tempSub); //we should probably throw error if there is no number following the command n
-	    				//System.out.println("Case n, with number argument:"+temp1);
+	    				
 	    				if(temp1<=100)
 	    				{
 	    					lineLength = temp1;
-	    					//System.out.println("Case n changing line length to:"+lineLength);
 	    				}
 	    				else //we probably need to change the response to the error to something more appropriate
-	    					System.out.println("Error: Lenght selection exceeds maximum!");
+	    				{
+	    					errCount++;
+							errLog.write("Error on line " + lineReadInCount + " : Length selection exceeds maximum!");
+		    				errLog.newLine();
+	    				}
 	    				break;
 	    			case("r"):
 	    				justified = 'r';
@@ -114,7 +118,11 @@ public class WordProcessor {
 	    				else if(temp2 == '-')
 	    					wrapping = false;
 	    				else//we probably need to change the response to the error to something more appropriate
-	    					System.out.println("Error: Wrapping command must be followed by + or -.");
+	    				{
+	    					errCount++;
+	    					errLog.write("Error on line " + lineReadInCount + " : Wrapping command must be followed by + or -.");
+		    				errLog.newLine();
+	    				}
 	    				break;
 	    			case("s"):
 	    				space = 1;
@@ -127,47 +135,69 @@ public class WordProcessor {
 	    				break;
 	    			case("p"):
 	    				//extracting a substring that should contain the number and parsing it as int
-	    				String tempSub2 = currentLine.substring(2,currentLine.length()-1);
+	    				String tempSub2 = currentLine.substring(2,currentLine.length());
 	    				int temp3=Integer.parseInt(tempSub2); //we should probably throw error if there is no number following the command n
 	    				//checking if the number of indents exceeds the current number of characters per line
 	    				if(temp3<lineLength)
 	    					paragraph = temp3;
 	    				else//we probably need to change the response to the error to something more appropriate
-	    					System.out.println("Error: Number of indentd exceeds the line length.");
+	    				{
+	    					errCount++;
+	    					errLog.write("Error on line " + lineReadInCount + " : Number of indents exceeds the line length.");
+		    				errLog.newLine();
+	    				}
 	    				break;
 	    			case("b"):
 	    				//extracting a substring that should contain the number and parsing it as int
-	    				String tempSub3 = currentLine.substring(2,currentLine.length()-1);
+	    				String tempSub3 = currentLine.substring(2,currentLine.length());
 	    				blankLine =Integer.parseInt(tempSub3);
 	    				break;
 	    			case("a"):
 	    				//extracting a substring that should contain the number and parsing it as int
-	    				String tempSub4 = currentLine.substring(2,currentLine.length()-1);
+	    				String tempSub4 = currentLine.substring(2,currentLine.length());
 	    				int temp4=Integer.parseInt(tempSub4);
 	    				if(temp4 == 1)
 	    					twoColumns = false;
 	    				else if(temp4 == 2)
 	    					twoColumns = true;
 	    				else//we probably need to change the response to the error to something more appropriate
-	    					System.out.println("Error: You can only choose between 1 or 2 columns.");
+	    				{
+	    					errCount++;
+	    					errLog.write("Error on line " + lineReadInCount + " : You can only choose between 1 or 2 columns.");
+		    				errLog.newLine();
+	    				}
 	    				break;	    		
 	    		}
 	    	}
 	    	//if columns are not set to 2 columns
 	    	else if(!twoColumns)
 	    	{
-		    		System.out.println(currentLine.length()-1);
-		    		//looping through all the characters in the read in txt line
-		    		for(int i = 0; i<currentLine.length()-1; i++)
-		    		{
+	    		if(blankLine != 0)
+	    		{
+	    			for(int l = 0; l<blankLine;l++)
+	    			{
+	    				out.newLine();
+	    			}
+
+	    			blankLine = 0;
+	    		}
+		    		
+		    	//looping through all the characters in the read in txt line
+		    	for(int i = 0; i<currentLine.length()-1; i++)
+		    	{	
 		    			System.out.println("i in the beggining of for loop line 145: "+i);
 		    			//reading the character of current line
 		    			currentChar = Character.toString(currentLine.charAt(i));
-		    			//System.out.println("Character at " +i+" is" + currentChar);
 		    			
 		    			//if title is on and the line length is longer than count give an errr but still format the appropriate length of it
 		    			if(title && (currentLine.length() != lineLength))
-		    				System.out.println("Error: Title has to fit on one line, with the length specified by user");
+		    			{
+		    				errCount++;
+	    					errLog.write("Error on line " + lineReadInCount + " : Title has to fit on one line, with the length specified by user");
+	    					System.out.println("line 186");
+	    					System.out.println("Error on line " + lineReadInCount + " : Title has to fit on one line, with the length specified by user");
+		    				errLog.newLine();
+		    			}
 		    			else if(title)
 		    			{
 		    				
@@ -175,67 +205,55 @@ public class WordProcessor {
 		    			//else if we are starting paragraph
 		    			
 	    				//if it is left justified and number of characters is 0 we print the number of indents and then the current character
-		    			System.out.println("Justification is: " + justified);
-		    			System.out.println("StartParagraph is : " + startParagraph);
-		    			System.out.println("indent count is : " + paragraph);
-	    				if(justified == 'l' && startParagraph)
+		    			if(justified == 'l' && startParagraph)
 	    				{
 	    					for(int j = 0; j<paragraph; j++)
 		    				{
 		    					currentOutputLine = currentOutputLine + " ";
 		    					currentCharCount++;
 		    				}
-	    					//System.out.println(currentOutputLine+"!");
 	    					startParagraph = false;
-	    					//System.out.println("StartParagraph is : " + startParagraph);
-	    					//i=currentCharCount;
 	    				}
-	    				//if wrapping is off
-	    				//this has to be modified for right,center etc justified
-	    				System.out.println("Wrapping is : " + wrapping);
-	    				if(!wrapping)
+		    			else if(justified == 'l' && paragraph !=0)
 		    			{
-	    					System.out.println("Entered no wrapping paragraph");
-		    				//while the count of characters is less then line length
-	    					//System.out.println("CharCount line174"+currentCharCount);
-	    					
-	    					/////////////////////////////////////////////////////////////////////
-	    					//THis while loop is haveing an issue with indexs out of range wasent able to figure it out
-	    					//before i had to stop working on it, if anyone is haveing this issue
-		    				while(currentCharCount < lineLength && i<currentLine.length())
+		    				errCount++;
+	    					errLog.write("Error on line " + lineReadInCount + " : Paragraph indent can only be used with left justification");
+	    					errLog.newLine();
+		    			}
+	    				//if wrapping is off
+	    			
+		    			if(!wrapping)
+		    			{
+	    					//while the count of characters is less then line length
+	    					while(currentCharCount < lineLength && i<currentLine.length())
 		    				{
-		    					//System.out.println("Entered currentCharCount is less than length, line177");
-		    					//until we reach a space we construct a word
-		    					//System.out.println("this is character:"+currentChar);
+	    						//until we reach a space we construct a word
 		    					if(!currentChar.equals(" ") || currentChar.equals(null))
 		    					{
 		    						leftoverWord = leftoverWord + currentChar;
-		    						//System.out.println(leftoverWord);
 		    						leftoverCount++;
-		    						System.out.println("count of the word being processed"+leftoverCount);
 		    						currentCharCount++;
-		    						//System.out.println("total count of characters"+currentCharCount);
 		    					}
 		    					//if we reach the end of the word or in other words space add the word to the output line and end that line as well as adding the count for the space
 		    					else
 		    					{
-		    						System.out.println("reached end of word");
 		    						currentOutputLine = currentOutputLine + leftoverWord+ " " ;
-		    						System.out.println(currentOutputLine);
 		    						currentCharCount++;
 		    						leftoverWord = "";
 		    						leftoverCount = 0;
-		    						System.out.println(currentCharCount);
 		    					}
 		    					//since we consume a character in the read in line we increase the i
 		    					i++;
-		    					System.out.println("i after adding character in line 202: "+i);
 		    					//and we fetch next character of the line
 		    					if(i<currentLine.length())
 		    						currentChar = Character.toString(currentLine.charAt(i));	
-		    					//currentCharCount++;
-		    					//System.out.println("Linelength is: "+lineLength);
-		    					//System.out.println("Current count is"+currentCharCount);
+		    					//questionable part
+		    					if(currentCharCount == lineLength && !leftoverWord.equals(""))
+		    					{
+		    						currentOutputLine = currentOutputLine + leftoverWord+ " " ;
+		    						leftoverWord ="";
+		    						leftoverCount = 0;
+		    					}
 		    				}
 		    				//if it is right justified add the number of leftover spaces in the beginning of the output line
 		    				if(justified == 'r')
@@ -268,28 +286,21 @@ public class WordProcessor {
 		    				//and we print the line to file using println and we reset the current output line to the word we have left from before
 		    				out.write(currentOutputLine);
 		    				out.newLine();
-		    				System.out.println("Current output line at the end of no wrap part");
-		    				System.out.println(currentOutputLine);
+		    				
 		    				//if it is double spaced print another line after it
 		    				if(space==2)
 		    					out.newLine();
-		    				//i=i+currentCharCount;
 		    				currentCharCount = leftoverCount;
-		    				System.out.println("Carried over count of characters from the word that needs to start next line is : "+ currentCharCount);
 		    				currentOutputLine = "";//leftoverWord;
-		    				//System.out.println("Carried over word that needs to start next line is : "+ currentOutputLine);
 		    			}
 	    				//if wrapping is on
 	    				else
 	    				{
-	    					System.out.println("entering the no wrap else statements");
-		    				//while the count of characters is less then line length keep constructing the output line
+	    					//while the count of characters is less then line length keep constructing the output line
 		    				while(currentCharCount < lineLength && i<currentLine.length()-1)
 		    				{
-		    					System.out.println("current character is " + currentChar +"at the current character count " + currentCharCount + " with the i "+ i);
 		    					currentOutputLine = currentOutputLine + currentChar;
-		    					System.out.println("current output line is "+ currentOutputLine);
-	    						currentCharCount++;
+		    					currentCharCount++;
 	    						//since we consume a character in the read in line we increase the i
 		    					i++;
 		    					//and we fetch next character of the line
@@ -316,8 +327,6 @@ public class WordProcessor {
 		    				//if it is double spaced print another line after it
 		    				out.write(currentOutputLine);
 		    				out.newLine();
-		    				System.out.println("Current output line at the end of wrap part");
-		    				System.out.println(currentOutputLine);
 		    				//if it is double spaced print another line after it
 		    				if(space==2)
 		    					out.newLine();
@@ -327,6 +336,7 @@ public class WordProcessor {
 	    				i--;
 	    				System.out.println("Starting the next output line with the i="+i+" and the current count of characters = "+currentCharCount);
 		    	}
+		    	
 	    	
     		//after we are done with reading in this line we scan in the next input line
 	    	}
@@ -339,6 +349,45 @@ public class WordProcessor {
 	    while (in1.hasNextLine());
 	    out.close();
 	    in1.close();
+	    errLog.close();
+	    
+	 // PrintWriter object for file3.txt 
+        PrintWriter pw = new PrintWriter("outputTest10.txt"); 
+          
+        // BufferedReader object for file1.txt 
+        BufferedReader br = new BufferedReader(new FileReader("test10done.txt")); 
+          
+        String line = br.readLine(); 
+          
+        // loop to copy each line of  
+        // file1.txt to  file3.txt 
+        while (line != null) 
+        { 
+            pw.println(line); 
+            line = br.readLine(); 
+        } 
+        pw.println(); 
+        pw.println("The input file had " + errCount + " errors:"); 
+        pw.println();
+        br = new BufferedReader(new FileReader("errorLogTest10.txt")); 
+          
+        line = br.readLine(); 
+          
+        // loop to copy each line of  
+        // file2.txt to  file3.txt 
+        while(line != null) 
+        { 
+            pw.println(line); 
+            line = br.readLine(); 
+        } 
+          
+        pw.flush(); 
+          
+        // closing resources 
+        br.close(); 
+        pw.close(); 
+	    
+	 
 	 }
 	
 	public static void RightJustified() {

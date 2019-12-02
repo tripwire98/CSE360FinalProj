@@ -1,0 +1,6 @@
+-n99
+-w-
+it is turning wrapping/merging on or off disregarding newlines (using as much space on the line as possible) 
+-n30
+-w+
+it is turning wrapping/merging on or off disregarding newlines (using as much space on the line as possible) 

@@ -1,0 +1,7 @@
+it is turning wrapping/merging on or off disregarding newlines (using as much sp 
+ace on the line as possible) 
+
+The input file had 2 errors:
+
+Error on line 0 : Length selection exceeds maximum!
+Error on line 0 : Wrapping command must be followed by + or -.

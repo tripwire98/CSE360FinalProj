@@ -1,6 +1,6 @@
-it is turning 
-wrapping/merging on 
-or off disregarding 
-newlines (using as 
-much space on the 
-line as possible) 
+it is turning wrappi
+ng/merging on or off
+ disregarding newlin
+es (using as much sp
+ace on the line as p
+ossible)

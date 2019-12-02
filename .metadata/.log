@@ -114,3 +114,400 @@ org.eclipse.swt.SWTException: Widget is disposed
 	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:660)
 	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:597)
 	at org.eclipse.equinox.launcher.Main.run(Main.java:1468)
+!SESSION 2019-12-01 20:40:19.651 -----------------------------------------------
+eclipse.buildId=4.13.0.I20190916-1045
+java.version=12.0.2
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.java.product C:\Users\mojca\Documents\GitHub\CSE360FinalProj\FinalProject\src\FinalProject\WordProcessor.java
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.java.product C:\Users\mojca\Documents\GitHub\CSE360FinalProj\FinalProject\src\FinalProject\WordProcessor.java
+
+!ENTRY org.eclipse.egit.ui 2 0 2019-12-01 20:40:44.188
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\mojca'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-12-01 20:40:46.701
+!MESSAGE Cannot run program "git" (in directory "\usr\bin"): CreateProcess error=2, The system cannot find the file specified
+!SESSION 2019-12-02 12:47:16.278 -----------------------------------------------
+eclipse.buildId=4.13.0.I20190916-1045
+java.version=12.0.2
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.java.product C:\Users\mojca\Documents\GitHub\CSE360FinalProj\FinalProject\src\FinalProject\WordProcessor.java
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.java.product C:\Users\mojca\Documents\GitHub\CSE360FinalProj\FinalProject\src\FinalProject\WordProcessor.java
+
+!ENTRY org.eclipse.egit.ui 2 0 2019-12-02 12:47:33.774
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\mojca'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-12-02 12:47:36.439
+!MESSAGE Cannot run program "git" (in directory "\usr\bin"): CreateProcess error=2, The system cannot find the file specified
+
+!ENTRY org.eclipse.egit.core 4 0 2019-12-02 13:13:07.790
+!MESSAGE Remove repository mapping of Git mapped resource for which project or mapped git repository has disappeared: 'RepositoryMapping[<empty> -> '../.git', absolute path: 'C:/Users/mojca/Documents/GitHub/.git' ]'
+!STACK 0
+java.io.FileNotFoundException: 
+	at org.eclipse.egit.core.project.GitProjectData.logAndUnmapGoneMappedResource(GitProjectData.java:724)
+	at org.eclipse.egit.core.project.GitProjectData.map(GitProjectData.java:687)
+	at org.eclipse.egit.core.project.GitProjectData.remapAll(GitProjectData.java:651)
+	at org.eclipse.egit.core.project.GitProjectData.setRepositoryMappings(GitProjectData.java:465)
+	at org.eclipse.egit.core.GitMoveDeleteHook.mapProject(GitMoveDeleteHook.java:284)
+	at org.eclipse.egit.core.GitMoveDeleteHook.moveProjectHelperMoveRepo(GitMoveDeleteHook.java:435)
+	at org.eclipse.egit.core.GitMoveDeleteHook.moveProject(GitMoveDeleteHook.java:344)
+	at org.eclipse.team.internal.core.MoveDeleteManager.moveProject(MoveDeleteManager.java:104)
+	at org.eclipse.core.internal.resources.Project.move(Project.java:982)
+	at org.eclipse.ui.ide.undo.MoveProjectOperation.moveProject(MoveProjectOperation.java:145)
+	at org.eclipse.ui.ide.undo.MoveProjectOperation.doExecute(MoveProjectOperation.java:120)
+	at org.eclipse.ui.ide.undo.AbstractWorkspaceOperation.lambda$0(AbstractWorkspaceOperation.java:200)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2295)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2322)
+	at org.eclipse.ui.ide.undo.AbstractWorkspaceOperation.execute(AbstractWorkspaceOperation.java:200)
+	at org.eclipse.core.commands.operations.DefaultOperationHistory.execute(DefaultOperationHistory.java:496)
+	at org.eclipse.ui.actions.MoveProjectAction.lambda$0(MoveProjectAction.java:116)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:122)
+
+!ENTRY org.eclipse.jdt.debug 4 120 2019-12-02 14:18:04.210
+!MESSAGE Exception processing async thread queue
+!SUBENTRY 1 org.eclipse.jdt.debug 4 120 2019-12-02 14:18:04.210
+!MESSAGE Exception processing async thread queue
+!STACK 0
+java.lang.ArrayIndexOutOfBoundsException: Index -1 out of bounds for length 0
+	at org.eclipse.jdt.internal.debug.eval.ast.engine.EvaluationSourceGenerator.getCompleteSnippet(EvaluationSourceGenerator.java:145)
+	at org.eclipse.jdt.internal.debug.eval.ast.engine.EvaluationSourceGenerator.<init>(EvaluationSourceGenerator.java:71)
+	at org.eclipse.jdt.internal.debug.eval.ast.engine.ASTEvaluationEngine.getCompiledExpression(ASTEvaluationEngine.java:366)
+	at org.eclipse.jdt.internal.debug.eval.ast.engine.ASTEvaluationEngine.evaluate(ASTEvaluationEngine.java:148)
+	at org.eclipse.jdt.internal.debug.ui.JavaWatchExpressionDelegate$EvaluationRunnable.run(JavaWatchExpressionDelegate.java:153)
+	at org.eclipse.jdt.internal.debug.core.model.JDIThread$ThreadJob.run(JDIThread.java:3606)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.jdt.debug 4 120 2019-12-02 14:18:04.552
+!MESSAGE Exception processing async thread queue
+!SUBENTRY 1 org.eclipse.jdt.debug 4 120 2019-12-02 14:18:04.552
+!MESSAGE Exception processing async thread queue
+!STACK 0
+java.lang.ArrayIndexOutOfBoundsException: Index -1 out of bounds for length 0
+	at org.eclipse.jdt.internal.debug.eval.ast.engine.EvaluationSourceGenerator.getCompleteSnippet(EvaluationSourceGenerator.java:145)
+	at org.eclipse.jdt.internal.debug.eval.ast.engine.EvaluationSourceGenerator.<init>(EvaluationSourceGenerator.java:71)
+	at org.eclipse.jdt.internal.debug.eval.ast.engine.ASTEvaluationEngine.getCompiledExpression(ASTEvaluationEngine.java:366)
+	at org.eclipse.jdt.internal.debug.eval.ast.engine.ASTEvaluationEngine.evaluate(ASTEvaluationEngine.java:148)
+	at org.eclipse.jdt.internal.debug.ui.JavaWatchExpressionDelegate$EvaluationRunnable.run(JavaWatchExpressionDelegate.java:153)
+	at org.eclipse.jdt.internal.debug.core.model.JDIThread$ThreadJob.run(JDIThread.java:3606)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.jdt.debug 4 120 2019-12-02 14:20:59.556
+!MESSAGE Exception processing async thread queue
+!SUBENTRY 1 org.eclipse.jdt.debug 4 120 2019-12-02 14:20:59.556
+!MESSAGE Exception processing async thread queue
+!STACK 0
+java.lang.ArrayIndexOutOfBoundsException: Index -1 out of bounds for length 0
+	at org.eclipse.jdt.internal.debug.eval.ast.engine.EvaluationSourceGenerator.getCompleteSnippet(EvaluationSourceGenerator.java:145)
+	at org.eclipse.jdt.internal.debug.eval.ast.engine.EvaluationSourceGenerator.<init>(EvaluationSourceGenerator.java:71)
+	at org.eclipse.jdt.internal.debug.eval.ast.engine.ASTEvaluationEngine.getCompiledExpression(ASTEvaluationEngine.java:366)
+	at org.eclipse.jdt.internal.debug.eval.ast.engine.ASTEvaluationEngine.evaluate(ASTEvaluationEngine.java:148)
+	at org.eclipse.jdt.internal.debug.ui.JavaWatchExpressionDelegate$EvaluationRunnable.run(JavaWatchExpressionDelegate.java:153)
+	at org.eclipse.jdt.internal.debug.core.model.JDIThread$ThreadJob.run(JDIThread.java:3606)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.debug.core 2 0 2019-12-02 14:22:46.764
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: FinalProject, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2019-12-02 14:22:46.944
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: FinalProject, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2019-12-02 14:22:47.064
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: FinalProject, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2019-12-02 14:22:47.126
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: FinalProject, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2019-12-02 14:22:47.203
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: FinalProject, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2019-12-02 15:17:06.225
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: FinalProject, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2019-12-02 15:17:06.425
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: FinalProject, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2019-12-02 15:17:06.469
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: FinalProject, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2019-12-02 15:17:06.525
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: FinalProject, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2019-12-02 15:17:06.567
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: FinalProject, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2019-12-02 15:17:06.622
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: FinalProject, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2019-12-02 15:17:06.685
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: FinalProject, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2019-12-02 15:17:08.592
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: FinalProject, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2019-12-02 15:17:08.637
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: FinalProject, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2019-12-02 15:17:08.679
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: FinalProject, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2019-12-02 15:17:08.722
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: FinalProject, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2019-12-02 15:17:08.770
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: FinalProject, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2019-12-02 15:17:08.808
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: FinalProject, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2019-12-02 15:17:08.853
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: FinalProject, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2019-12-02 15:17:09.053
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: FinalProject, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2019-12-02 15:17:09.101
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: FinalProject, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2019-12-02 15:17:09.144
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: FinalProject, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2019-12-02 15:17:09.186
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: FinalProject, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2019-12-02 15:17:09.237
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: FinalProject, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2019-12-02 15:17:09.340
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: FinalProject, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2019-12-02 15:17:09.388
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: FinalProject, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2019-12-02 15:17:09.462
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: FinalProject, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2019-12-02 15:17:09.478
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: FinalProject, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2019-12-02 15:17:09.527
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: FinalProject, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2019-12-02 15:17:09.537
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: FinalProject, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2019-12-02 15:17:09.588
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: FinalProject, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2019-12-02 15:17:09.616
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: FinalProject, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2019-12-02 15:17:09.676
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: FinalProject, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2019-12-02 15:17:09.691
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: FinalProject, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2019-12-02 15:17:09.741
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: FinalProject, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2019-12-02 15:17:09.752
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: FinalProject, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2019-12-02 15:17:09.795
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: FinalProject, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2019-12-02 15:17:09.833
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: FinalProject, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2019-12-02 15:17:09.882
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: FinalProject, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2019-12-02 15:17:09.897
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: FinalProject, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2019-12-02 15:17:09.942
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: FinalProject, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2019-12-02 15:17:09.958
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: FinalProject, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2019-12-02 15:17:09.998
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: FinalProject, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2019-12-02 15:17:10.008
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: FinalProject, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2019-12-02 15:17:10.051
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: FinalProject, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2019-12-02 15:17:10.060
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: FinalProject, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2019-12-02 15:17:10.103
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: FinalProject, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2019-12-02 15:17:10.116
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: FinalProject, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2019-12-02 15:17:10.178
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: FinalProject, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2019-12-02 15:17:10.194
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: FinalProject, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2019-12-02 15:17:10.238
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: FinalProject, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2019-12-02 15:17:10.247
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: FinalProject, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2019-12-02 15:17:10.289
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: FinalProject, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2019-12-02 15:17:10.299
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: FinalProject, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2019-12-02 15:26:54.475
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: FinalProject, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2019-12-02 15:26:54.673
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: FinalProject, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2019-12-02 15:26:54.731
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: FinalProject, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2019-12-02 15:26:54.783
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: FinalProject, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2019-12-02 15:26:54.840
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: FinalProject, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2019-12-02 15:26:54.881
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: FinalProject, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2019-12-02 15:26:54.923
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: FinalProject, java.base
+
+!ENTRY org.eclipse.debug.core 2 0 2019-12-02 15:26:54.971
+!MESSAGE Compile error during code evaluation: The package java.lang is accessible from more than one module: FinalProject, java.base
+
+!ENTRY org.eclipse.jdt.debug 4 125 2019-12-02 15:41:07.697
+!MESSAGE Internal error logged from JDI Debug: 
+!STACK 1
+org.eclipse.debug.core.DebugException: Breakpoint does not have an associated marker.
+	at org.eclipse.debug.core.model.Breakpoint.ensureMarker(Breakpoint.java:323)
+	at org.eclipse.jdt.internal.debug.core.breakpoints.JavaBreakpoint.getTypeName(JavaBreakpoint.java:926)
+	at org.eclipse.jdt.internal.debug.core.model.JDIDebugTarget.lambda$0(JDIDebugTarget.java:1356)
+	at org.eclipse.jdt.internal.debug.core.model.JDIDebugTarget.supportsResource(JDIDebugTarget.java:1400)
+	at org.eclipse.jdt.internal.debug.core.model.JDIDebugTarget.supportsBreakpoint(JDIDebugTarget.java:1356)
+	at org.eclipse.jdt.internal.debug.core.model.JDIDebugTarget.breakpointRemoved(JDIDebugTarget.java:1641)
+	at org.eclipse.debug.internal.core.BreakpointManager$BreakpointNotifier.run(BreakpointManager.java:1055)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.debug.internal.core.BreakpointManager$BreakpointNotifier.notify(BreakpointManager.java:1079)
+	at org.eclipse.debug.internal.core.BreakpointManager.fireUpdate(BreakpointManager.java:987)
+	at org.eclipse.debug.internal.core.BreakpointManager.removeBreakpoints(BreakpointManager.java:520)
+	at org.eclipse.debug.internal.core.BreakpointManager$BreakpointManagerVisitor.update(BreakpointManager.java:776)
+	at org.eclipse.debug.internal.core.BreakpointManager.resourceChanged(BreakpointManager.java:709)
+	at org.eclipse.core.internal.events.NotificationManager$1.run(NotificationManager.java:305)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:295)
+	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:158)
+	at org.eclipse.core.internal.resources.Workspace.broadcastBuildEvent(Workspace.java:365)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:157)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:244)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+!SUBENTRY 1 org.eclipse.debug.core 4 5012 2019-12-02 15:41:07.703
+!MESSAGE Breakpoint does not have an associated marker.
+
+!ENTRY org.eclipse.jdt.debug 4 125 2019-12-02 15:41:07.726
+!MESSAGE Internal error logged from JDI Debug: 
+!STACK 1
+org.eclipse.debug.core.DebugException: Breakpoint does not have an associated marker.
+	at org.eclipse.debug.core.model.Breakpoint.ensureMarker(Breakpoint.java:323)
+	at org.eclipse.jdt.internal.debug.core.breakpoints.JavaBreakpoint.getTypeName(JavaBreakpoint.java:926)
+	at org.eclipse.jdt.internal.debug.core.model.JDIDebugTarget.lambda$0(JDIDebugTarget.java:1356)
+	at org.eclipse.jdt.internal.debug.core.model.JDIDebugTarget.supportsResource(JDIDebugTarget.java:1400)
+	at org.eclipse.jdt.internal.debug.core.model.JDIDebugTarget.supportsBreakpoint(JDIDebugTarget.java:1356)
+	at org.eclipse.jdt.internal.debug.core.model.JDIDebugTarget.breakpointRemoved(JDIDebugTarget.java:1641)
+	at org.eclipse.debug.internal.core.BreakpointManager$BreakpointNotifier.run(BreakpointManager.java:1055)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.debug.internal.core.BreakpointManager$BreakpointNotifier.notify(BreakpointManager.java:1079)
+	at org.eclipse.debug.internal.core.BreakpointManager.fireUpdate(BreakpointManager.java:987)
+	at org.eclipse.debug.internal.core.BreakpointManager.removeBreakpoints(BreakpointManager.java:520)
+	at org.eclipse.debug.internal.core.BreakpointManager$BreakpointManagerVisitor.update(BreakpointManager.java:776)
+	at org.eclipse.debug.internal.core.BreakpointManager.resourceChanged(BreakpointManager.java:709)
+	at org.eclipse.core.internal.events.NotificationManager$1.run(NotificationManager.java:305)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:295)
+	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:158)
+	at org.eclipse.core.internal.resources.Workspace.broadcastBuildEvent(Workspace.java:365)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:157)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:244)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+!SUBENTRY 1 org.eclipse.debug.core 4 5012 2019-12-02 15:41:07.726
+!MESSAGE Breakpoint does not have an associated marker.
+
+!ENTRY org.eclipse.jdt.debug 4 125 2019-12-02 15:41:07.740
+!MESSAGE Internal error logged from JDI Debug: 
+!STACK 1
+org.eclipse.debug.core.DebugException: Breakpoint does not have an associated marker.
+	at org.eclipse.debug.core.model.Breakpoint.ensureMarker(Breakpoint.java:323)
+	at org.eclipse.jdt.internal.debug.core.breakpoints.JavaBreakpoint.getTypeName(JavaBreakpoint.java:926)
+	at org.eclipse.jdt.internal.debug.core.model.JDIDebugTarget.lambda$0(JDIDebugTarget.java:1356)
+	at org.eclipse.jdt.internal.debug.core.model.JDIDebugTarget.supportsResource(JDIDebugTarget.java:1400)
+	at org.eclipse.jdt.internal.debug.core.model.JDIDebugTarget.supportsBreakpoint(JDIDebugTarget.java:1356)
+	at org.eclipse.jdt.internal.debug.core.model.JDIDebugTarget.breakpointRemoved(JDIDebugTarget.java:1641)
+	at org.eclipse.debug.internal.core.BreakpointManager$BreakpointNotifier.run(BreakpointManager.java:1055)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.debug.internal.core.BreakpointManager$BreakpointNotifier.notify(BreakpointManager.java:1079)
+	at org.eclipse.debug.internal.core.BreakpointManager.fireUpdate(BreakpointManager.java:987)
+	at org.eclipse.debug.internal.core.BreakpointManager.removeBreakpoints(BreakpointManager.java:520)
+	at org.eclipse.debug.internal.core.BreakpointManager$BreakpointManagerVisitor.update(BreakpointManager.java:776)
+	at org.eclipse.debug.internal.core.BreakpointManager.resourceChanged(BreakpointManager.java:709)
+	at org.eclipse.core.internal.events.NotificationManager$1.run(NotificationManager.java:305)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:295)
+	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:158)
+	at org.eclipse.core.internal.resources.Workspace.broadcastBuildEvent(Workspace.java:365)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:157)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:244)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+!SUBENTRY 1 org.eclipse.debug.core 4 5012 2019-12-02 15:41:07.742
+!MESSAGE Breakpoint does not have an associated marker.
+
+!ENTRY org.eclipse.jdt.debug 4 125 2019-12-02 15:41:07.760
+!MESSAGE Internal error logged from JDI Debug: 
+!STACK 1
+org.eclipse.debug.core.DebugException: Breakpoint does not have an associated marker.
+	at org.eclipse.debug.core.model.Breakpoint.ensureMarker(Breakpoint.java:323)
+	at org.eclipse.jdt.internal.debug.core.breakpoints.JavaBreakpoint.getTypeName(JavaBreakpoint.java:926)
+	at org.eclipse.jdt.internal.debug.core.model.JDIDebugTarget.lambda$0(JDIDebugTarget.java:1356)
+	at org.eclipse.jdt.internal.debug.core.model.JDIDebugTarget.supportsResource(JDIDebugTarget.java:1400)
+	at org.eclipse.jdt.internal.debug.core.model.JDIDebugTarget.supportsBreakpoint(JDIDebugTarget.java:1356)
+	at org.eclipse.jdt.internal.debug.core.model.JDIDebugTarget.breakpointRemoved(JDIDebugTarget.java:1641)
+	at org.eclipse.debug.internal.core.BreakpointManager$BreakpointNotifier.run(BreakpointManager.java:1055)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.debug.internal.core.BreakpointManager$BreakpointNotifier.notify(BreakpointManager.java:1079)
+	at org.eclipse.debug.internal.core.BreakpointManager.fireUpdate(BreakpointManager.java:987)
+	at org.eclipse.debug.internal.core.BreakpointManager.removeBreakpoints(BreakpointManager.java:520)
+	at org.eclipse.debug.internal.core.BreakpointManager$BreakpointManagerVisitor.update(BreakpointManager.java:776)
+	at org.eclipse.debug.internal.core.BreakpointManager.resourceChanged(BreakpointManager.java:709)
+	at org.eclipse.core.internal.events.NotificationManager$1.run(NotificationManager.java:305)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:295)
+	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:158)
+	at org.eclipse.core.internal.resources.Workspace.broadcastBuildEvent(Workspace.java:365)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:157)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:244)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+!SUBENTRY 1 org.eclipse.debug.core 4 5012 2019-12-02 15:41:07.760
+!MESSAGE Breakpoint does not have an associated marker.
