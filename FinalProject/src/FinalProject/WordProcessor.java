@@ -95,15 +95,15 @@ public class WordProcessor {
 	    				break;
 	    			case("r"):
 	    				justified = 'r';
-	    				RightJustified();
+	    				
 	    				break;
 	    			case("l"):
 	    				justified = 'l';
-	    				LeftJustified();
+	    				
 	    				break;
 	    			case("c"):
 	    				justified = 'c';
-	    				CenterJustified();
+	    				
 	    				break;
 	    			case("e"):
 	    				justified = 'e';
@@ -351,15 +351,6 @@ public class WordProcessor {
 	    out.close();
 	    in1.close();
 	 }
-	
-	public static void RightJustified() {
-		System.out.println("Right working");
-	}
-	public static void LeftJustified() {
-		System.out.println("left working");
-	}
-	public static void CenterJustified() {
-		System.out.println("center working");
-	}
+
 }
 
