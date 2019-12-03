@@ -14,7 +14,7 @@ public class WordProcessor {
 		//for getting the location later on but this works for now
 		
 		//you need to change these files to where they are on your pc
-		String fileLocation = "test1.txt";
+		String fileLocation = "test2.txt";
 	    File file = new File(fileLocation);
 	    
 	    //scanner used in case this line is text 
@@ -24,12 +24,12 @@ public class WordProcessor {
 	    //we can change the name of a file that we are outputting to something else
 	    
 	    //you need to change these files to where they are on your pc
-	    File fout = new File("test1done.txt");
+	    File fout = new File("test2done.txt");
 	    
 	   	FileOutputStream fos = new FileOutputStream(fout);
 	    BufferedWriter out = new BufferedWriter(new OutputStreamWriter(fos));
 	    
-	    File errorLog = new File("errorLogtest1.txt");
+	    File errorLog = new File("errorLogtest2.txt");
 	    
 	    FileOutputStream errors = new FileOutputStream(errorLog);
 	    BufferedWriter errLog = new BufferedWriter(new OutputStreamWriter(errors));
@@ -173,7 +173,7 @@ public class WordProcessor {
 	    	//if columns are not set to 2 columns
 	    	else if(!twoColumns)
 	    	{
-	    		System.out.println("Wrapping is " + wrapping + " at line 176");
+	    		
 	    		if(blankLine != 0)
 	    		{
 	    			for(int l = 0; l<blankLine;l++)
@@ -311,6 +311,12 @@ public class WordProcessor {
 		    					//and we fetch next character of the line
 		    					currentChar = Character.toString(currentLine.charAt(i));	
 		    				}
+		    				
+		    				if(i==currentLine.length()-1) 
+		    				{
+		    					currentOutputLine = currentOutputLine + currentChar;
+		    				}
+		    					
 		    				//if it is right justified add the number of leftover spaces in the beginning of the output line
 		    				if(justified == 'r')
 		    				{
@@ -362,10 +368,10 @@ public class WordProcessor {
 	    errLog.close();
 	    
 	 // PrintWriter object for file3.txt 
-        PrintWriter pw = new PrintWriter("outputTest1.txt"); 
+        PrintWriter pw = new PrintWriter("outputTest2.txt"); 
           
         // BufferedReader object for file1.txt 
-        BufferedReader br = new BufferedReader(new FileReader("test1done.txt")); 
+        BufferedReader br = new BufferedReader(new FileReader("test2done.txt")); 
           
         String line = br.readLine(); 
           
@@ -379,7 +385,7 @@ public class WordProcessor {
         pw.println(); 
         pw.println("The input file had " + errCount + " errors:"); 
         pw.println();
-        br = new BufferedReader(new FileReader("errorLogTest1.txt")); 
+        br = new BufferedReader(new FileReader("errorLogTest2.txt")); 
           
         line = br.readLine(); 
           
