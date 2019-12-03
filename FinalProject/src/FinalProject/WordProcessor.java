@@ -55,6 +55,7 @@ public class WordProcessor {
 	    //variables holding the word leftover from previous line and the count of characters in it
 	    String leftoverWord = "";
 	    int leftoverCount = 0;
+	    int leftOverChars = 0;
 	    
 	    boolean startParagraph = true;
 	    
@@ -98,15 +99,15 @@ public class WordProcessor {
 	    				break;
 	    			case("r"):
 	    				justified = 'r';
-	    				RightJustified();
+	    				
 	    				break;
 	    			case("l"):
 	    				justified = 'l';
-	    				LeftJustified();
+	    				
 	    				break;
 	    			case("c"):
 	    				justified = 'c';
-	    				CenterJustified();
+	    				
 	    				break;
 	    			case("e"):
 	    				justified = 'e';
@@ -259,7 +260,9 @@ public class WordProcessor {
 		    				//if it is right justified add the number of leftover spaces in the beginning of the output line
 		    				if(justified == 'r')
 		    				{
-		    					for(int k = 1; k <= leftoverCount; k++)
+		    					System.out.println("Justification is: " + justified);
+		    					leftOverChars = lineLength - currentOutputLine.length();
+		    					for(int k = 1; k <= leftOverChars; k++)
 		    					{
 		    						currentOutputLine = " " + currentOutputLine;
 		    					}
@@ -267,7 +270,10 @@ public class WordProcessor {
 		    				//if it is center justified divide the number of leftover count in 2 and add half in the beginning
 		    				if(justified == 'c')
 		    				{
-		    					for(int k = 1; k <= leftoverCount/2; k++)
+		    					System.out.println("Justification is: " + justified);
+		    					System.out.println(leftoverCount);
+		    					leftOverChars = lineLength - currentOutputLine.length();
+		    					for(int k = 1; k <= leftOverChars/2; k++)
 		    					{
 		    						currentOutputLine = " " + currentOutputLine;
 		    					}
@@ -310,7 +316,9 @@ public class WordProcessor {
 		    				//if it is right justified add the number of leftover spaces in the beginning of the output line
 		    				if(justified == 'r')
 		    				{
-		    					for(int k = 1; k <= leftoverCount; k++)
+		    					System.out.println("Justification is: " + justified);
+		    					leftOverChars = lineLength - currentOutputLine.length();
+		    					for(int k = 1; k <= leftOverChars; k++)
 		    					{
 		    						currentOutputLine = " " + currentOutputLine;
 		    					}
@@ -318,7 +326,10 @@ public class WordProcessor {
 		    				//if it is center justified divide the number of leftover count in 2 and add half in the beginning
 		    				if(justified == 'c')
 		    				{
-		    					for(int k = 1; k <= leftoverCount/2; k++)
+		    					System.out.println("Justification is: " + justified);
+		    					System.out.println(leftoverCount);
+		    					leftOverChars = lineLength - currentOutputLine.length();
+		    					for(int k = 1; k <= leftOverChars/2; k++)
 		    					{
 		    						currentOutputLine = " " + currentOutputLine;
 		    					}
@@ -390,15 +401,6 @@ public class WordProcessor {
 	    
 	 
 	 }
-	
-	public static void RightJustified() {
-		System.out.println("Right working");
-	}
-	public static void LeftJustified() {
-		System.out.println("left working");
-	}
-	public static void CenterJustified() {
-		System.out.println("center working");
-	}
+
 }
 
