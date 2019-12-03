@@ -14,6 +14,8 @@ import java.awt.Font;
 public class AppWindow {
 
 	private JFrame frame;
+	private JTextField textField;
+	private JTextField textField_1;
 
 	//  Launch the application 
 	
@@ -46,19 +48,20 @@ public class AppWindow {
 		frame.getContentPane().setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Text Editor", SwingConstants.CENTER);
-		lblNewLabel.setFont(new Font("Yu Gothic UI Semibold", Font.BOLD, 11));
+		lblNewLabel.setFont(new Font("Yu Gothic UI Semibold", Font.BOLD, 14));
 		lblNewLabel.setForeground(Color.BLUE);
-		lblNewLabel.setBounds(79, 21, 292, 14);
+		lblNewLabel.setBounds(68, 21, 303, 32);
 		frame.getContentPane().add(lblNewLabel);
 		
+		// Temporary TODO : Replace text field with place file will be saved
 		JTextArea textArea = new JTextArea();
 		textArea.setBackground(Color.WHITE);
 		textArea.setForeground(new Color(0, 0, 255));
-		textArea.setBounds(27, 46, 386, 85);
+		textArea.setBounds(28, 162, 380, 88);
 		frame.getContentPane().add(textArea);
 		
 		JButton btnUploadAndRun = new JButton("Open File");
-		btnUploadAndRun.setBackground(Color.BLUE);
+		btnUploadAndRun.setBackground(Color.LIGHT_GRAY);
 		btnUploadAndRun.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				OpenFile of = new OpenFile();
@@ -73,11 +76,11 @@ public class AppWindow {
 			}
 		});
 		
-		btnUploadAndRun.setBounds(79, 153, 132, 23);
+		btnUploadAndRun.setBounds(68, 64, 132, 23);
 		frame.getContentPane().add(btnUploadAndRun);
 		
 		JButton btnNewButton = new JButton("Upload and Run");
-		btnNewButton.setBackground(Color.BLUE);
+		btnNewButton.setBackground(Color.LIGHT_GRAY);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -88,26 +91,27 @@ public class AppWindow {
 			
 			
 		});
-		btnNewButton.setBounds(79, 187, 132, 23);
+		btnNewButton.setBounds(68, 113, 132, 23);
 		frame.getContentPane().add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Save File");
-		btnNewButton_1.setBackground(Color.BLUE);
+		btnNewButton_1.setBackground(Color.LIGHT_GRAY);
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnNewButton_1.setBounds(239, 153, 132, 23);
+		btnNewButton_1.setBounds(239, 64, 132, 23);
 		frame.getContentPane().add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("Save and Quit");
-		btnNewButton_2.setBackground(Color.BLUE);
+		btnNewButton_2.setBackground(Color.LIGHT_GRAY);
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnNewButton_2.setBounds(239, 187, 132, 23);
+		btnNewButton_2.setBounds(239, 113, 132, 23);
 		frame.getContentPane().add(btnNewButton_2);
+		
 			
 		
 	}
