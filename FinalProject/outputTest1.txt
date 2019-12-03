@@ -5,3 +5,6 @@ newlines (using as
 much space on the 
 line as 
 possible)
+
+The input file had 0 errors:
+

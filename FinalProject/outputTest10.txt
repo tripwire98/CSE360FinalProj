@@ -5,13 +5,13 @@ ng/merging on or off
  disregarding newlin 
 es (using as much sp 
 ace on the line as p 
-     ossible)it is turning wra 
+     ossibleit is turning wrap 
 
-pping/merging on or off disreg 
+ping/merging on or off disrega 
 
-arding newlines (using as much 
+rding newlines (using as much 
 
- space on the line as possible 
+space on the line as possible) 
 
 
 The input file had 1 errors:

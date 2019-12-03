@@ -1,0 +1,10 @@
+it is turning 
+wrapping/merging on 
+or off disregarding 
+newlines (using as 
+much space on the 
+line as possible) 
+
+The input file had 1 errors:
+
+Error on line 0 : Wrapping command must be followed by + or -.

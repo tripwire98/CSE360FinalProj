@@ -3,9 +3,9 @@
 -b2
 -c
 -p5
-it is turning wrapping/merging on or off disregarding newlines (using as much space on the line as possible) 
+it is turning wrapping/merging on or off disregarding newlines (using as much space on the line as possible)
 -n30
 -w-
 -l
 -d
-it is turning wrapping/merging on or off disregarding newlines (using as much space on the line as possible) 
+it is turning wrapping/merging on or off disregarding newlines (using as much space on the line as possible)
