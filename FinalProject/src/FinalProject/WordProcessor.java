@@ -45,6 +45,7 @@ public class WordProcessor {
 	    int paragraph = 0;
 	    int blankLine = 0;
 	    boolean twoColumns = false;
+	    int columnLineLegnth = 0;
 	    
 	    //variable keeping track of the character count
 	    int currentCharCount = 0;
@@ -356,6 +357,181 @@ public class WordProcessor {
 	    	else
 	    	{
 	    		lineLength = 35;
+	    		if(blankLine != 0)
+	    		{
+	    			for(int l = 0; l<blankLine;l++)
+	    			{
+	    				out.newLine();
+	    			}
+
+	    			blankLine = 0;
+	    		}
+		    		
+		    	//looping through all the characters in the read in txt line
+		    	for(int i = 0; i<currentLine.length()-1; i++)
+		    	{	
+		    			System.out.println("i in the beggining of for loop line 145: "+i);
+		    			//reading the character of current line
+		    			currentChar = Character.toString(currentLine.charAt(i));
+		    			
+		    			//if title is on and the line length is longer than count give an errr but still format the appropriate length of it
+		    			if(title && (currentLine.length() != lineLength))
+		    			{
+		    				errCount++;
+	    					errLog.write("Error on line " + lineReadInCount + " : Title has to fit on one line, with the length specified by user");
+	    					System.out.println("line 186");
+	    					System.out.println("Error on line " + lineReadInCount + " : Title has to fit on one line, with the length specified by user");
+		    				errLog.newLine();
+		    			}
+		    			else if(title)
+		    			{
+		    				
+		    			}
+		    			//else if we are starting paragraph
+		    			
+	    				//if it is left justified and number of characters is 0 we print the number of indents and then the current character
+		    			if(justified == 'l' && paragraph != 0 && startParagraph)
+		    			{
+		    				errCount++;
+	    					errLog.write("Error on line " + lineReadInCount + " : Paragraph indent can only be used with left justification");
+	    					errLog.newLine();
+		    			}
+		    			if(justified == 'l' && startParagraph)
+	    				{
+	    					for(int j = 0; j<paragraph; j++)
+		    				{
+		    					currentOutputLine = currentOutputLine + " ";
+		    					currentCharCount++;
+		    				}
+	    					startParagraph = false;
+	    				}
+		    			
+	    				//if wrapping is off
+	    			
+		    			if(!wrapping)
+		    			{
+	    					//while the count of characters is less then line length
+	    					while(currentCharCount < lineLength && i<currentLine.length())
+		    				{
+	    						//until we reach a space we construct a word
+		    					if(!currentChar.equals(" ") || currentChar.equals(null))
+		    					{
+		    						leftoverWord = leftoverWord + currentChar;
+		    						leftoverCount++;
+		    						currentCharCount++;
+		    					}
+		    					//if we reach the end of the word or in other words space add the word to the output line and end that line as well as adding the count for the space
+		    					else
+		    					{
+		    						currentOutputLine = currentOutputLine + leftoverWord+ " " ;
+		    						currentCharCount++;
+		    						leftoverWord = "";
+		    						leftoverCount = 0;
+		    					}
+		    					//since we consume a character in the read in line we increase the i
+		    					i++;
+		    					//and we fetch next character of the line
+		    					if(i<currentLine.length())
+		    						currentChar = Character.toString(currentLine.charAt(i));	
+		    					//questionable part
+		    					if(currentCharCount == lineLength && !leftoverWord.equals(""))
+		    					{
+		    						currentOutputLine = currentOutputLine + leftoverWord+ " " ;
+		    						leftoverWord ="";
+		    						leftoverCount = 0;
+		    					}
+		    				}
+		    				//if it is right justified add the number of leftover spaces in the beginning of the output line
+		    				if(justified == 'r')
+		    				{
+		    					System.out.println("Justification is: " + justified);
+		    					leftOverChars = lineLength - currentOutputLine.length();
+		    					for(int k = 1; k <= leftOverChars; k++)
+		    					{
+		    						currentOutputLine = " " + currentOutputLine;
+		    					}
+		    				}
+		    				//if it is center justified divide the number of leftover count in 2 and add half in the beginning
+		    				if(justified == 'c')
+		    				{
+		    					System.out.println("Justification is: " + justified);
+		    					System.out.println(leftoverCount);
+		    					leftOverChars = lineLength - currentOutputLine.length();
+		    					for(int k = 1; k <= leftOverChars/2; k++)
+		    					{
+		    						currentOutputLine = " " + currentOutputLine;
+		    					}
+		    				}
+		    				//complete the leftover word 
+		    				while(!currentChar.equals(" "))
+		    				{
+		    					leftoverWord = leftoverWord + currentChar;
+	    						leftoverCount++;
+		    					//since we consume a character in the read in line we increase the i
+		    					i++;
+		    					//and we fetch next character of the line
+		    					currentChar = Character.toString(currentLine.charAt(i));  
+		    				}
+		    				
+		    				//when we reach the maximum character length set for the output we set the char count to leftover char count
+		    				//and we print the line to file using println and we reset the current output line to the word we have left from before
+		    				out.write(currentOutputLine);
+		    				out.newLine();
+		    				
+		    				//if it is double spaced print another line after it
+		    				if(space==2)
+		    					out.newLine();
+		    				currentCharCount = leftoverCount;
+		    				currentOutputLine = "";//leftoverWord;
+		    			}
+	    				//if wrapping is on
+	    				else
+	    				{
+	    					//while the count of characters is less then line length keep constructing the output line
+		    				while(currentCharCount < lineLength && i<currentLine.length()-1)
+		    				{
+		    					currentOutputLine = currentOutputLine + currentChar;
+		    					currentCharCount++;
+	    						//since we consume a character in the read in line we increase the i
+		    					i++;
+		    					//and we fetch next character of the line
+		    					currentChar = Character.toString(currentLine.charAt(i));	
+		    				}
+		    				//if it is right justified add the number of leftover spaces in the beginning of the output line
+		    				if(justified == 'r')
+		    				{
+		    					System.out.println("Justification is: " + justified);
+		    					leftOverChars = lineLength - currentOutputLine.length();
+		    					for(int k = 1; k <= leftOverChars; k++)
+		    					{
+		    						currentOutputLine = " " + currentOutputLine;
+		    					}
+		    				}
+		    				//if it is center justified divide the number of leftover count in 2 and add half in the beginning
+		    				if(justified == 'c')
+		    				{
+		    					System.out.println("Justification is: " + justified);
+		    					System.out.println(leftoverCount);
+		    					leftOverChars = lineLength - currentOutputLine.length();
+		    					for(int k = 1; k <= leftOverChars/2; k++)
+		    					{
+		    						currentOutputLine = " " + currentOutputLine;
+		    					}
+		    				}
+		    				//when we reach the maximum character length set for the output we set the char count to leftover char count
+		    				//and we print the line to file using println and we reset the current output line to the word we have left from before
+		    				//if it is double spaced print another line after it
+		    				out.write(currentOutputLine);
+		    				out.newLine();
+		    				//if it is double spaced print another line after it
+		    				if(space==2)
+		    					out.newLine();
+		    				currentOutputLine = "";
+		    				currentCharCount = 0;
+	    				}
+	    				i--;
+	    				System.out.println("Starting the next output line with the i="+i+" and the current count of characters = "+currentCharCount);
+		    	}
 	    	}
 	    }
 	    while (in1.hasNextLine());
