@@ -311,8 +311,8 @@ public class WordProcessor {
 		    				if(space==2)
 		    					out.newLine();
 		    				
-		    				if(i==currentLine.length())
-		    					out.write(leftoverWord);
+		    				//if(i==currentLine.length())
+		    					//out.write(leftoverWord);
 		    				
 		    				currentCharCount = leftoverCount;
 		    				currentOutputLine = "";//leftoverWord;
