@@ -1,9 +1,9 @@
-it is turning wrappi
-ng/merging on or off
- disregarding newlin
-es (using as much sp
-ace on the line as p
-ossible)
+it is turning wrapping/merging on or off disregarding newlines (using as much sp
+                                                    ace on the line as possible)
+                                    test test test test test test test test test
+                       This is the end of the world today
+                       ----------------------------------
+                                                             just kiding its not
 
 The input file had 0 errors:
 

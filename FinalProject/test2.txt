@@ -1,3 +1,8 @@
--n20
+-n80
+-r
 -w+
 it is turning wrapping/merging on or off disregarding newlines (using as much space on the line as possible)
+test test test test test test test test test
+-t
+This is the end of the world today
+just kiding its not

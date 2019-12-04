@@ -45,6 +45,7 @@ public class WordProcessor {
 	    int paragraph = 0;
 	    int blankLine = 0;
 	    boolean twoColumns = false;
+	    char prevJustified = 'l';
 	    
 	    //variable keeping track of the character count
 	    int currentCharCount = 0;
@@ -133,6 +134,8 @@ public class WordProcessor {
 	    				break;
 	    			case("t"):
 	    				title = true;
+	    				prevJustified = justified;
+	    				justified = 'c';
 	    				break;
 	    			case("p"):
 	    				//extracting a substring that should contain the number and parsing it as int
@@ -192,18 +195,7 @@ public class WordProcessor {
 		    			currentChar = Character.toString(currentLine.charAt(i));
 		    			
 		    			//if title is on and the line length is longer than count give an errr but still format the appropriate length of it
-		    			if(title && (currentLine.length() != lineLength))
-		    			{
-		    				errCount++;
-	    					errLog.write("Error on line " + lineReadInCount + " : Title has to fit on one line, with the length specified by user");
-	    					System.out.println("line 186");
-	    					System.out.println("Error on line " + lineReadInCount + " : Title has to fit on one line, with the length specified by user");
-		    				errLog.newLine();
-		    			}
-		    			else if(title)
-		    			{
-		    				
-		    			}
+		    			
 		    			//else if we are starting paragraph
 		    			
 	    				//if it is left justified and number of characters is 0 we print the number of indents and then the current character
@@ -285,9 +277,36 @@ public class WordProcessor {
 		    				
 		    				//when we reach the maximum character length set for the output we set the char count to leftover char count
 		    				//and we print the line to file using println and we reset the current output line to the word we have left from before
+		    				
+		    				System.out.println(currentOutputLine);
 		    				out.write(currentOutputLine);
 		    				out.newLine();
-		    				
+		    				if(title && (currentLine.length() > lineLength))
+			    			{
+			    				errCount++;
+		    					errLog.write("Error on line " + lineReadInCount + " : Title has to fit on one line, with the length specified by user");
+		    					System.out.println("line 186");
+		    					System.out.println(currentLine.length());
+		    					System.out.println("Error on line " + lineReadInCount + " : Title has to fit on one line, with the length specified by user");
+			    				errLog.newLine();
+			    			}
+			    			else if(title)
+			    			{
+			    				System.out.println(lineLength);
+			    				leftOverChars = lineLength - currentLine.length();
+			    				for(i = 0; i <= leftOverChars/2 - 1;i++) {
+			    					out.write(" ");
+				    				
+			    				}
+			    				for(i = 0; i <= currentLine.length()-1;i++) {
+			    					out.write("-");
+				    				
+			    				}
+			    				
+			    				title= false;
+			    				justified = prevJustified;
+			    				out.newLine();
+			    			}
 		    				//if it is double spaced print another line after it
 		    				if(space==2)
 		    					out.newLine();
@@ -338,12 +357,39 @@ public class WordProcessor {
 		    						currentOutputLine = " " + currentOutputLine;
 		    					}
 		    				}
+		    				
 		    				//when we reach the maximum character length set for the output we set the char count to leftover char count
 		    				//and we print the line to file using println and we reset the current output line to the word we have left from before
 		    				//if it is double spaced print another line after it
 		    				out.write(currentOutputLine);
 		    				out.newLine();
 		    				//if it is double spaced print another line after it
+		    				if(title && (currentLine.length() > lineLength))
+			    			{
+			    				errCount++;
+		    					errLog.write("Error on line " + lineReadInCount + " : Title has to fit on one line, with the length specified by user");
+		    					System.out.println("line 186");
+		    					System.out.println(currentLine.length());
+		    					System.out.println("Error on line " + lineReadInCount + " : Title has to fit on one line, with the length specified by user");
+			    				errLog.newLine();
+			    			}
+			    			else if(title)
+			    			{
+			    				System.out.println(lineLength);
+			    				leftOverChars = lineLength - currentLine.length();
+			    				for(i = 0; i <= leftOverChars/2 - 1;i++) {
+			    					out.write(" ");
+				    				
+			    				}
+			    				for(i = 0; i <= currentLine.length()-1;i++) {
+			    					out.write("-");
+				    				
+			    				}
+			    				
+			    				title= false;
+			    				justified = prevJustified;
+			    				out.newLine();
+			    			}
 		    				if(space==2)
 		    					out.newLine();
 		    				currentOutputLine = "";
