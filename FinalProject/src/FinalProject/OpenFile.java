@@ -1,4 +1,6 @@
+package TextEditor;
 import java.util.Scanner;
+import java.io.File;
 import java.io.*;
 import javax.swing.JFileChooser;
 public class OpenFile {
@@ -6,6 +8,7 @@ public class OpenFile {
 	// Declare Variable
 	JFileChooser fileChooser = new JFileChooser();
 	StringBuilder sb = new StringBuilder();
+	public String f;
 	
 	public void PickFile() throws Exception {
 		if(fileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
@@ -18,6 +21,7 @@ public class OpenFile {
 			
 			// Read text from file
 			while(input.hasNext()) {
+				f = input.next();
 				sb.append(input.nextLine());
 				sb.append("\n");
 				

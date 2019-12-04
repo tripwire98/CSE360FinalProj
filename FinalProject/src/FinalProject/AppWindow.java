@@ -1,3 +1,4 @@
+package TextEditor;
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 import java.awt.Container;
@@ -98,6 +99,8 @@ public class AppWindow {
 		btnNewButton_1.setBackground(Color.LIGHT_GRAY);
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				// TODO: Save file
 			}
 		});
 		btnNewButton_1.setBounds(239, 64, 132, 23);
@@ -107,12 +110,14 @@ public class AppWindow {
 		btnNewButton_2.setBackground(Color.LIGHT_GRAY);
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				System.exit(0);
 			}
 		});
 		btnNewButton_2.setBounds(239, 113, 132, 23);
 		frame.getContentPane().add(btnNewButton_2);
 		
-			
+	
 		
 	}
 }
