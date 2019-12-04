@@ -1,10 +1,10 @@
 The GUI didnt work as intended with out project and it didnt allow us to selected the designated file to put through the program, 
 
 However the program is fully functional you just have to go into WordProccesor.java and change the filelocation on line 19 of the code to the 
-file location of the test file you will be running and that will create an output file called test1dont.txt
+file location of the test file you will be running and that will create an output file called test1done.txt
 
 another way to run the program is to name the test file test2.txt and an output file called test1done.txt and place those on your desktop with the jar file
-that will allow you to use the jar executable to get the correct output displayed in test1don.txt
+that will allow you to use the jar executable to get the correct output displayed in test1done.txt
 
 THANKYOU!!!!
 and im really sorry for the inconvience of the GUI not working properly.
