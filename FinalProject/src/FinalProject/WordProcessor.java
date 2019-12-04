@@ -14,7 +14,7 @@ public class WordProcessor {
 		//for getting the location later on but this works for now
 		
 		//you need to change these files to where they are on your pc
-		String fileLocation = "test2.txt";
+		String fileLocation = "test10.txt";
 	    File file = new File(fileLocation);
 	    
 	    //scanner used in case this line is text 
@@ -45,6 +45,7 @@ public class WordProcessor {
 	    int paragraph = 0;
 	    int blankLine = 0;
 	    boolean twoColumns = false;
+	    int twoColumnLineCounter = 1;
 	    
 	    //variable keeping track of the character count
 	    int currentCharCount = 0;
@@ -133,6 +134,9 @@ public class WordProcessor {
 	    				break;
 	    			case("t"):
 	    				title = true;
+	    				//currentLine = in1.nextLine();
+	    				String tempSub3 = currentLine.substring(2,currentLine.length());
+	    				blankLine =Integer.parseInt(tempSub3);
 	    				break;
 	    			case("p"):
 	    				//extracting a substring that should contain the number and parsing it as int
@@ -150,8 +154,8 @@ public class WordProcessor {
 	    				break;
 	    			case("b"):
 	    				//extracting a substring that should contain the number and parsing it as int
-	    				String tempSub3 = currentLine.substring(2,currentLine.length());
-	    				blankLine =Integer.parseInt(tempSub3);
+	    				String tempSub5 = currentLine.substring(2,currentLine.length());
+	    				blankLine =Integer.parseInt(tempSub5);
 	    				break;
 	    			case("a"):
 	    				//extracting a substring that should contain the number and parsing it as int
@@ -159,8 +163,28 @@ public class WordProcessor {
 	    				int temp4=Integer.parseInt(tempSub4);
 	    				if(temp4 == 1)
 	    					twoColumns = false;
-	    				else if(temp4 == 2)
+	    				else if(temp4 == 2) {
+	    					
+	    					System.out.println("You have assigned two columns true.");
+	    					
 	    					twoColumns = true;
+	    					
+	    				    Scanner in2 = new Scanner(file);
+	    				    String currentLineCounter = currentLine; 
+
+	    					while (in2.hasNextLine()) {
+		    					System.out.println("You have incremented");
+
+	    						twoColumnLineCounter++;
+	    						
+	    						if (in2.hasNextLine()) {
+	    							currentLineCounter = in2.nextLine();
+	    						}
+	    					}
+	    						    						    					
+	    					System.out.println("You have counted " + twoColumnLineCounter + " lines. " + in2.toString());
+	    					
+	    				}
 	    				else//we probably need to change the response to the error to something more appropriate
 	    				{
 	    					errCount++;
@@ -359,7 +383,32 @@ public class WordProcessor {
 	    	//if two columns are on
 	    	else
 	    	{
-	    		lineLength = 35;
+	    		
+	    		System.out.println("Starting two columns!");
+	    		String[] columns;
+	    		
+	    		lineLength = 80;
+	    		while (twoColumnLineCounter != 0) {
+	    			
+	    			int lineCounterClone = 0;
+	    			String columnLine2 = "";
+	    			
+	    			for(int i = 0; i < twoColumnLineCounter/2; i++) {
+	    				String columnLine = "";
+	    				int lineCounter = 0;
+	    				while (columnLine.length() < 35 || in1.hasNextLine() == true) {
+	    					
+	    					columnLine += + currentLine.charAt(lineCounter);
+	    					
+	    					lineCounter++;
+	    				}
+	    				System.out.println(columnLine);
+	    			}
+	    			
+	    			
+	    		}
+	    		
+	    		
 	    	}
 	    }
 	    while (in1.hasNextLine());
